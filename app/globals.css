@@ -112,12 +112,12 @@ h1, h2, h3, h4 { font-family: var(--font-barlow), sans-serif; }
 }
 
 /* ── Animation Utilities ───────────────────────────────────────── */
-.animate-marquee       { animation: marquee 42s linear infinite; }
-.animate-ken-burns     { animation: kenBurns 14s ease-out both; }
-.animate-ken-burns-alt { animation: kenBurnsAlt 14s ease-out both; }
-.animate-pulse-gold    { animation: pulseGold 2s ease-in-out infinite; }
+.animate-marquee       { animation: marquee 42s linear infinite; will-change: transform; }
+.animate-ken-burns     { animation: kenBurns 14s ease-out both; will-change: transform; }
+.animate-ken-burns-alt { animation: kenBurnsAlt 14s ease-out both; will-change: transform; }
+.animate-pulse-gold    { animation: pulseGold 2s ease-in-out infinite; will-change: opacity; }
 .animate-glow-breath   { animation: glowBreath 3s ease-in-out infinite; }
-.animate-float         { animation: float 4s ease-in-out infinite; }
+.animate-float         { animation: float 4s ease-in-out infinite; will-change: transform; }
 
 /* Hero entrance animations */
 .hero-line-1 { animation: heroReveal 1s cubic-bezier(0.22,1,0.36,1) 0.1s both; }
@@ -137,45 +137,53 @@ h1, h2, h3, h4 { font-family: var(--font-barlow), sans-serif; }
 .reveal-hidden {
   opacity: 0;
   transform: translateY(36px);
+  will-change: opacity, transform;
 }
 .reveal-visible {
   opacity: 1;
   transform: translateY(0);
   transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1),
               transform 0.8s cubic-bezier(0.22,1,0.36,1);
+  will-change: auto;
 }
 
 .reveal-hidden-left {
   opacity: 0;
   transform: translateX(-48px);
+  will-change: opacity, transform;
 }
 .reveal-visible-left {
   opacity: 1;
   transform: translateX(0);
   transition: opacity 0.9s cubic-bezier(0.22,1,0.36,1),
               transform 0.9s cubic-bezier(0.22,1,0.36,1);
+  will-change: auto;
 }
 
 .reveal-hidden-right {
   opacity: 0;
   transform: translateX(48px);
+  will-change: opacity, transform;
 }
 .reveal-visible-right {
   opacity: 1;
   transform: translateX(0);
   transition: opacity 0.9s cubic-bezier(0.22,1,0.36,1),
               transform 0.9s cubic-bezier(0.22,1,0.36,1);
+  will-change: auto;
 }
 
 .reveal-hidden-scale {
   opacity: 0;
   transform: scale(0.93);
+  will-change: opacity, transform;
 }
 .reveal-visible-scale {
   opacity: 1;
   transform: scale(1);
   transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1),
               transform 0.8s cubic-bezier(0.22,1,0.36,1);
+  will-change: auto;
 }
 
 /* ── Text Effects ──────────────────────────────────────────────── */
@@ -377,7 +385,7 @@ h1, h2, h3, h4 { font-family: var(--font-barlow), sans-serif; }
 }
 
 /* ── Marquee ───────────────────────────────────────────────────── */
-.marquee-track { animation: marquee 45s linear infinite; }
+.marquee-track { animation: marquee 45s linear infinite; will-change: transform; }
 
 /* ── Lightbox ──────────────────────────────────────────────────── */
 .lightbox-open { overflow: hidden; }

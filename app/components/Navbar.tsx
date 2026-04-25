@@ -29,7 +29,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-700 ${
         scrolled || mobileOpen
           ? "bg-void/92 backdrop-blur-2xl border-b border-white/[0.04]"
           : "bg-transparent"
