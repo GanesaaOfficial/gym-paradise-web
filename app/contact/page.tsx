@@ -118,7 +118,7 @@ export default function ContactPage() {
               <ScrollReveal delay={300}>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <a
-                    href="https://maps.google.com"
+                    href="https://maps.google.com/maps?q=Gym+Paradise+3.0+Jalan+KPB+9+Kawasan+Perindustrian+Balakong+43300+Seri+Kembangan+Selangor"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn-primary flex-1 justify-center gap-2.5"
@@ -145,22 +145,16 @@ export default function ContactPage() {
 
             {/* Right: Map + Building photo */}
             <div className="space-y-4">
-              {/* Map placeholder */}
+              {/* Google Maps embed */}
               <ScrollReveal direction="right">
-                <div className="relative h-72 lg:h-80 bg-white overflow-hidden border border-black/[0.08]">
-                  {/* Replace with <iframe src="...google maps embed..." /> */}
-                  <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-8">
-                    <div className="w-14 h-14 border border-gold/30 flex items-center justify-center text-gold mb-4">
-                      <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z"/>
-                      </svg>
-                    </div>
-                    <p className="font-display font-bold uppercase tracking-[0.1em] text-graphite text-base">Google Maps Embed</p>
-                    <p className="text-stone/60 text-xs mt-2 leading-relaxed">
-                      Replace this block with your Google Maps embed iframe.<br/>
-                      Maps → Share → Embed a map → Copy HTML
-                    </p>
-                  </div>
+                <div className="relative h-72 lg:h-80 overflow-hidden border border-black/[0.08]">
+                  <iframe
+                    src="https://maps.google.com/maps?q=Gym+Paradise+3.0+Jalan+KPB+9+Kawasan+Perindustrian+Balakong+Seri+Kembangan+Selangor&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                    className="w-full h-full border-0"
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Gym Paradise 3.0 Location"
+                  />
                 </div>
               </ScrollReveal>
 

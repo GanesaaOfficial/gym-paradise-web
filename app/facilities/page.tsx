@@ -12,6 +12,7 @@ export const metadata: Metadata = {
 
 const zones = [
   {
+    id: "main-floor",
     img: "/Photos/unnamed-25.webp",
     alt: "Main training floor with BOLDER neon and colorful LED lights",
     category: "Main Floor",
@@ -24,6 +25,7 @@ const zones = [
     highlight: false,
   },
   {
+    id: "free-weights",
     img: "/Photos/unnamed-20.webp",
     alt: "Extensive dumbbell rack with heavy dumbbells in rows",
     category: "Free Weights",
@@ -36,6 +38,7 @@ const zones = [
     highlight: false,
   },
   {
+    id: "machines",
     img: "/Photos/unnamed-24.webp",
     alt: "Strength machine zone with UNSTOPPABLE neon sign",
     category: "Machines",
@@ -48,6 +51,7 @@ const zones = [
     highlight: false,
   },
   {
+    id: "hyrox",
     img: "/Photos/unnamed-21.webp",
     alt: "HYROX Training Club with indoor running track and rowers",
     category: "Signature Zone",
@@ -60,6 +64,7 @@ const zones = [
     highlight: true,
   },
   {
+    id: "cardio",
     img: "/Photos/unnamed-35.webp",
     alt: "Cardio area with cycling machines and neon signs",
     category: "Cardio",
@@ -72,6 +77,7 @@ const zones = [
     highlight: false,
   },
   {
+    id: "grip-galaxy",
     img: "/Photos/unnamed-22.webp",
     alt: "Grip Galaxy - wall of 50+ cable attachments with blue neon sign",
     category: "Unique Feature",
@@ -84,6 +90,7 @@ const zones = [
     highlight: false,
   },
   {
+    id: "lounge",
     img: "/Photos/unnamed-17.webp",
     alt: "Lounge and reception area with supplement bar and Dietmonsta meals",
     category: "Lounge & Nutrition",
@@ -96,6 +103,7 @@ const zones = [
     highlight: false,
   },
   {
+    id: "amenities",
     img: "/Photos/unnamed-23.webp",
     alt: "Premium changing room with lockers and showers",
     category: "Amenities",
@@ -122,17 +130,25 @@ export default function FacilitiesPage() {
       />
 
       {/* ── Zone navigation strip ── */}
-      <section className="bg-pearl border-b border-black/[0.06] py-10">
+      <section className="bg-pearl border-b border-black/[0.06] py-10 sticky top-[68px] lg:top-[76px] z-40">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="flex flex-wrap items-center justify-between gap-6">
             <div className="flex flex-wrap gap-4 lg:gap-8">
-              {["Main Floor", "Free Weights", "HYROX Zone", "Grip Galaxy", "Cardio", "Lounge"].map((z) => (
-                <span
-                  key={z}
-                  className="font-display text-[12px] font-semibold tracking-[0.2em] uppercase text-stone hover:text-gold cursor-default transition-colors duration-200"
+              {[
+                { label: "Main Floor",  href: "#main-floor"  },
+                { label: "Free Weights", href: "#free-weights" },
+                { label: "HYROX Zone",  href: "#hyrox"       },
+                { label: "Grip Galaxy", href: "#grip-galaxy"  },
+                { label: "Cardio",      href: "#cardio"       },
+                { label: "Lounge",      href: "#lounge"       },
+              ].map((z) => (
+                <a
+                  key={z.href}
+                  href={z.href}
+                  className="font-display text-[12px] font-semibold tracking-[0.2em] uppercase text-stone hover:text-gold transition-colors duration-200"
                 >
-                  {z}
-                </span>
+                  {z.label}
+                </a>
               ))}
             </div>
             <Link href="/pricing" className="btn-primary text-[12px] px-6 py-3">
@@ -148,7 +164,8 @@ export default function FacilitiesPage() {
           {zones.map((zone, i) => (
             <div
               key={zone.title}
-              className={`flex flex-col ${
+              id={zone.id}
+              className={`scroll-mt-36 flex flex-col ${
                 zone.wide ? "" : i % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
               } gap-10 lg:gap-16 items-center`}
             >

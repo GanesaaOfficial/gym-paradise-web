@@ -50,8 +50,8 @@ const plans = [
   },
   {
     name: "3-Month",
-    price: "RM XX",
-    period: "/month",
+    price: "WhatsApp Us",
+    period: "",
     tagline: "Commit. Progress. Repeat.",
     description:
       "Lock in a quarter year and save more per session. Great for athletes following a dedicated 12-week training programme.",
@@ -69,8 +69,8 @@ const plans = [
   },
   {
     name: "Annual",
-    price: "RM XXX",
-    period: "/year",
+    price: "WhatsApp Us",
+    period: "",
     tagline: "Best rate. Best results.",
     description:
       "The lowest cost-per-session. For athletes who are fully committed to their long-term goals and want maximum value.",
@@ -185,9 +185,9 @@ export default function PricingPage() {
                       {plan.name}
                     </h3>
                     <p className="text-ash/60 text-xs italic mb-3">{plan.tagline}</p>
-                    <div className="flex items-baseline gap-1">
-                      <span className="font-display text-4xl font-black text-cream">{plan.price}</span>
-                      <span className="text-ash text-sm">{plan.period}</span>
+                    <div className="flex items-baseline gap-1 flex-wrap">
+                      <span className={`font-display font-black text-cream leading-tight ${plan.price === "WhatsApp Us" ? "text-2xl text-gold" : "text-4xl"}`}>{plan.price}</span>
+                      {plan.period && <span className="text-ash text-sm">{plan.period}</span>}
                     </div>
                   </div>
 
@@ -224,7 +224,7 @@ export default function PricingPage() {
 
           <ScrollReveal delay={300}>
             <p className="text-center text-ash/40 text-xs mt-10">
-              * Day pass RM25–35. Monthly from RM95–RM158 depending on package. WhatsApp us for current rates and promotions.
+              * Day pass RM25–35. Monthly from RM95. WhatsApp us for current 3-month and annual rates and promotions.
             </p>
           </ScrollReveal>
         </div>

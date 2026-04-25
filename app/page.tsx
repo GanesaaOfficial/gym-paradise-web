@@ -99,7 +99,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:divide-x lg:divide-black/[0.06] lg:gap-0">
             {stats.map((s, i) => (
-              <ScrollReveal key={i} delay={i * 80} className="flex flex-col items-center lg:items-start lg:px-12 text-center lg:text-left">
+              <ScrollReveal key={i} delay={i * 80} className={`flex flex-col items-center lg:items-start text-center lg:text-left ${i === 0 ? "lg:pr-12" : "lg:px-12"}`}>
                 <div className="font-display font-black text-[clamp(40px,5vw,64px)] leading-none text-graphite mb-1">
                   <AnimatedCounter end={s.end} suffix={s.suffix} duration={2000} />
                 </div>
