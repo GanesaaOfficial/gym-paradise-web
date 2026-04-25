@@ -122,14 +122,14 @@ export default function FacilitiesPage() {
       />
 
       {/* ── Zone navigation strip ── */}
-      <section className="bg-ink border-b border-white/[0.05] py-10">
+      <section className="bg-pearl border-b border-black/[0.06] py-10">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="flex flex-wrap items-center justify-between gap-6">
             <div className="flex flex-wrap gap-4 lg:gap-8">
               {["Main Floor", "Free Weights", "HYROX Zone", "Grip Galaxy", "Cardio", "Lounge"].map((z) => (
                 <span
                   key={z}
-                  className="font-display text-[12px] font-semibold tracking-[0.2em] uppercase text-ash hover:text-gold cursor-default transition-colors duration-200"
+                  className="font-display text-[12px] font-semibold tracking-[0.2em] uppercase text-stone hover:text-gold cursor-default transition-colors duration-200"
                 >
                   {z}
                 </span>

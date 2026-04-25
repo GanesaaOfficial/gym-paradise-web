@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const navLinks = [
+  { label: "Home",       href: "/" },
   { label: "Facilities", href: "/facilities" },
   { label: "Pricing",    href: "/pricing" },
   { label: "Gallery",    href: "/gallery" },
@@ -98,24 +99,32 @@ export default function Navbar() {
         {/* Mobile menu */}
         <div
           className={`md:hidden transition-all duration-500 overflow-hidden ${
-            mobileOpen ? "max-h-72 opacity-100 pb-5" : "max-h-0 opacity-0"
+            mobileOpen ? "max-h-96 opacity-100 pb-6" : "max-h-0 opacity-0"
           }`}
         >
-          <div className="border-t border-white/[0.05] pt-5 flex flex-col gap-1">
+          <div className="border-t border-white/[0.05] pt-4 flex flex-col gap-0.5">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`font-display text-[13px] font-semibold tracking-[0.22em] uppercase px-3 py-3 transition-colors duration-200 ${
+                className={`font-display text-[13px] font-semibold tracking-[0.22em] uppercase px-3 py-3.5 rounded transition-colors duration-200 flex items-center gap-2 ${
                   active(link.href)
-                    ? "text-gold"
-                    : "text-ash hover:text-cream"
+                    ? "text-gold bg-gold/[0.06]"
+                    : "text-ash hover:text-cream hover:bg-white/[0.03]"
                 }`}
               >
+                {active(link.href) && <span className="w-1 h-1 rounded-full bg-gold shrink-0" />}
                 {link.label}
               </Link>
             ))}
-            <div className="pt-3 border-t border-white/[0.04] mt-2">
+            <div className="pt-4 border-t border-white/[0.04] mt-3 flex flex-col gap-3">
+              <a
+                href="https://wa.me/601126898810"
+                target="_blank" rel="noopener noreferrer"
+                className="font-display text-[12px] font-semibold tracking-[0.2em] uppercase text-ash hover:text-gold transition-colors duration-200 px-3 py-2"
+              >
+                WhatsApp Us
+              </a>
               <Link href="/pricing" className="btn-primary w-full text-center py-3.5">
                 Join Now
               </Link>

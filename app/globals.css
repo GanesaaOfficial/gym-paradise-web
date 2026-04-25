@@ -21,6 +21,12 @@
   --color-gold-bright:  #E2BC5E;
   --color-gold-dim:     #8A7030;
   --color-gold-glow:    rgba(201,168,76,0.15);
+
+  /* Light palette — for alternating premium sections */
+  --color-pearl:    #F7F6F3;
+  --color-snow:     #FFFFFF;
+  --color-stone:    #6B6B6B;
+  --color-graphite: #111111;
 }
 
 /* ── Base ──────────────────────────────────────────────────────── */
@@ -369,6 +375,57 @@ h1, h2, h3, h4 { font-family: var(--font-barlow), sans-serif; }
 
 /* ── Lightbox ──────────────────────────────────────────────────── */
 .lightbox-open { overflow: hidden; }
+
+/* ── Light Card (white-bg sections) ───────────────────────────── */
+.card-light {
+  background: #FFFFFF;
+  border: 1px solid rgba(0,0,0,0.07);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.06), 0 1px 4px rgba(0,0,0,0.03);
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s ease, transform 0.35s cubic-bezier(0.22,1,0.36,1), box-shadow 0.35s ease;
+}
+.card-light::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201,168,76,0.5), transparent);
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+.card-light:hover {
+  border-color: rgba(201,168,76,0.2);
+  transform: translateY(-5px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.12), 0 0 24px rgba(201,168,76,0.06);
+}
+.card-light:hover::before { transform: scaleX(1); }
+
+/* ── Outline button for light backgrounds ──────────────────────── */
+.btn-outline-dark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: transparent;
+  color: #111111;
+  font-family: var(--font-barlow), sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 15px 40px;
+  border-radius: 2px;
+  border: 1px solid rgba(17,17,17,0.18);
+  cursor: pointer;
+  transition: border-color 0.25s ease, background 0.25s ease, transform 0.2s ease, color 0.25s ease;
+}
+.btn-outline-dark:hover {
+  border-color: rgba(201,168,76,0.5);
+  background: rgba(201,168,76,0.07);
+  color: #C9A84C;
+  transform: translateY(-2px);
+}
 
 /* ── Parallax ──────────────────────────────────────────────────── */
 .parallax-img {

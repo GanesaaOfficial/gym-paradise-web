@@ -231,14 +231,14 @@ export default function PricingPage() {
       </section>
 
       {/* ── Personal Training ── */}
-      <section className="py-24 lg:py-32 bg-ink border-t border-white/[0.04]">
+      <section className="py-24 lg:py-32 bg-pearl border-t border-black/[0.06]">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <ScrollReveal className="mb-14">
             <div className="section-label">
               <span className="font-display text-[11px] font-semibold text-gold tracking-[0.4em] uppercase">Personal Training</span>
             </div>
             <div className="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-6">
-              <h2 className="font-display font-black uppercase leading-[0.88] text-[clamp(42px,6vw,80px)] text-cream">
+              <h2 className="font-display font-black uppercase leading-[0.88] text-[clamp(42px,6vw,80px)] text-graphite">
                 Train With <span className="text-gold-gradient">An Expert</span>
               </h2>
               <a
@@ -250,7 +250,7 @@ export default function PricingPage() {
                 Enquire About PT
               </a>
             </div>
-            <p className="text-ash text-base lg:text-lg font-light mt-4 max-w-2xl leading-relaxed">
+            <p className="text-stone text-base lg:text-lg font-light mt-4 max-w-2xl leading-relaxed">
               Our certified personal trainers build fully customised programmes, correct your form, and push you past plateaus. Results, not guesswork.
             </p>
           </ScrollReveal>
@@ -258,17 +258,17 @@ export default function PricingPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {ptPackages.map((pkg, i) => (
               <ScrollReveal key={pkg.name} delay={i * 100}>
-                <div className="card-premium p-8 flex flex-col gap-5 h-full">
-                  <div className="w-10 h-10 border border-gold/20 flex items-center justify-center text-gold">
+                <div className="card-light p-8 flex flex-col gap-5 h-full">
+                  <div className="w-10 h-10 border border-gold/30 flex items-center justify-center text-gold">
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
                     </svg>
                   </div>
                   <div>
                     <div className="font-display text-[11px] font-bold uppercase tracking-[0.3em] text-gold mb-1">{pkg.sessions}</div>
-                    <h3 className="font-display font-black uppercase text-[22px] tracking-tight text-cream">{pkg.name}</h3>
+                    <h3 className="font-display font-black uppercase text-[22px] tracking-tight text-graphite">{pkg.name}</h3>
                   </div>
-                  <p className="text-ash text-sm font-light leading-relaxed flex-1">{pkg.desc}</p>
+                  <p className="text-stone text-sm font-light leading-relaxed flex-1">{pkg.desc}</p>
                   <a
                     href="https://wa.me/601126898810"
                     target="_blank"
@@ -288,13 +288,13 @@ export default function PricingPage() {
       </section>
 
       {/* ── FAQ ── */}
-      <section className="py-24 lg:py-32 bg-void border-t border-white/[0.04]">
+      <section className="py-24 lg:py-32 bg-snow border-t border-black/[0.06]">
         <div className="max-w-3xl mx-auto px-6 lg:px-12">
           <ScrollReveal className="text-center mb-14">
             <div className="section-label justify-center">
               <span className="font-display text-[11px] font-semibold text-gold tracking-[0.4em] uppercase">FAQ</span>
             </div>
-            <h2 className="font-display font-black uppercase leading-[0.88] text-[clamp(42px,6vw,80px)] text-cream">
+            <h2 className="font-display font-black uppercase leading-[0.88] text-[clamp(42px,6vw,80px)] text-graphite">
               Got <span className="text-gold-gradient">Questions?</span>
             </h2>
           </ScrollReveal>
@@ -302,21 +302,21 @@ export default function PricingPage() {
           <div className="space-y-3">
             {faqs.map((faq, i) => (
               <ScrollReveal key={faq.q} delay={i * 60}>
-                <div className="card-premium p-7 border-l-0">
-                  <h3 className="text-cream font-semibold text-base mb-3 flex items-start gap-3">
-                    <span className="font-display font-black text-[20px] leading-none text-gold/40 shrink-0">
+                <div className="card-light p-7">
+                  <h3 className="text-graphite font-semibold text-base mb-3 flex items-start gap-3">
+                    <span className="font-display font-black text-[20px] leading-none text-gold/50 shrink-0">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     {faq.q}
                   </h3>
-                  <p className="text-ash text-sm font-light leading-relaxed pl-9">{faq.a}</p>
+                  <p className="text-stone text-sm font-light leading-relaxed pl-9">{faq.a}</p>
                 </div>
               </ScrollReveal>
             ))}
           </div>
 
           <ScrollReveal delay={300} className="text-center mt-12">
-            <p className="text-ash/60 text-sm mb-6">Still have questions?</p>
+            <p className="text-stone/80 text-sm mb-6">Still have questions?</p>
             <a
               href="https://wa.me/601126898810"
               target="_blank"

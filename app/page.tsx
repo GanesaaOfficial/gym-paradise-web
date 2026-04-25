@@ -95,18 +95,18 @@ export default function HomePage() {
       </div>
 
       {/* ─── STATS ─── */}
-      <section className="bg-ink border-b border-white/[0.04] py-16 lg:py-20">
+      <section className="bg-pearl border-b border-black/[0.06] py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:divide-x lg:divide-white/[0.05] lg:gap-0">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:divide-x lg:divide-black/[0.06] lg:gap-0">
             {stats.map((s, i) => (
               <ScrollReveal key={i} delay={i * 80} className="flex flex-col items-center lg:items-start lg:px-12 text-center lg:text-left">
-                <div className="font-display font-black text-[clamp(40px,5vw,64px)] leading-none text-cream mb-1">
+                <div className="font-display font-black text-[clamp(40px,5vw,64px)] leading-none text-graphite mb-1">
                   <AnimatedCounter end={s.end} suffix={s.suffix} duration={2000} />
                 </div>
                 <div className="font-display font-bold text-gold text-[14px] tracking-[0.15em] uppercase mb-1">
                   {s.unit}
                 </div>
-                <div className="text-ash text-xs font-light">{s.desc}</div>
+                <div className="text-stone text-xs font-light">{s.desc}</div>
               </ScrollReveal>
             ))}
           </div>
@@ -150,14 +150,14 @@ export default function HomePage() {
       </section>
 
       {/* ─── HIGHLIGHTS ─── */}
-      <section className="py-28 lg:py-36 bg-void">
+      <section className="py-28 lg:py-36 bg-snow">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-6 mb-16 lg:mb-20">
             <ScrollReveal>
               <div className="section-label">
                 <span className="font-display text-[11px] font-semibold text-gold tracking-[0.4em] uppercase">What Sets Us Apart</span>
               </div>
-              <h2 className="font-display font-black uppercase leading-[0.88] tracking-tight text-[clamp(42px,6vw,80px)] text-cream">
+              <h2 className="font-display font-black uppercase leading-[0.88] tracking-tight text-[clamp(42px,6vw,80px)] text-graphite">
                 Zones Built For<br /><span className="text-gold-gradient">Champions</span>
               </h2>
             </ScrollReveal>
@@ -174,7 +174,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {highlights.map((h, i) => (
               <ScrollReveal key={h.num} delay={i * 100}>
-                <Link href={h.href} className="card-premium card-img-zoom block rounded-none group h-full">
+                <Link href={h.href} className="card-light card-img-zoom block rounded-none group h-full">
                   <div className="relative h-64 lg:h-[300px] overflow-hidden">
                     <Image src={h.img} alt={h.alt} fill quality={80} sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
                     <div className="absolute inset-0 overlay-cinematic" />
@@ -184,16 +184,16 @@ export default function HomePage() {
                     </div>
                     {/* Label */}
                     <div className="absolute top-5 left-5">
-                      <span className="font-display text-[10px] font-semibold tracking-[0.3em] uppercase text-gold bg-void/60 backdrop-blur-sm px-3 py-1.5">
+                      <span className="font-display text-[10px] font-semibold tracking-[0.3em] uppercase text-gold bg-void/70 backdrop-blur-sm px-3 py-1.5">
                         {h.label}
                       </span>
                     </div>
                   </div>
                   <div className="p-7">
-                    <h3 className="font-display font-black uppercase text-[26px] leading-[0.95] tracking-tight text-cream group-hover:text-gold transition-colors duration-300 mb-3 whitespace-pre-line">
+                    <h3 className="font-display font-black uppercase text-[26px] leading-[0.95] tracking-tight text-graphite group-hover:text-gold transition-colors duration-300 mb-3 whitespace-pre-line">
                       {h.title}
                     </h3>
-                    <p className="text-ash text-sm font-light leading-relaxed mb-5">{h.desc}</p>
+                    <p className="text-stone text-sm font-light leading-relaxed mb-5">{h.desc}</p>
                     <span className="btn-ghost text-[11px]">
                       Learn More
                       <svg className="w-3.5 h-3.5 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -209,7 +209,7 @@ export default function HomePage() {
       </section>
 
       {/* ─── GALLERY PREVIEW ─── */}
-      <section className="py-28 lg:py-36 bg-ink border-t border-white/[0.04]">
+      <section className="py-28 lg:py-36 bg-ink">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-6 mb-12">
             <ScrollReveal>
@@ -225,8 +225,25 @@ export default function HomePage() {
             </ScrollReveal>
           </div>
 
-          {/* Asymmetric grid */}
-          <div className="grid grid-cols-12 grid-rows-2 gap-3 h-[420px] lg:h-[520px]">
+          {/* Mobile: simple 2x2 grid */}
+          <div className="grid grid-cols-2 gap-3 h-[360px] md:hidden">
+            {[
+              { src: "/Photos/unnamed-25.webp", alt: "Main floor BOLDER neon" },
+              { src: "/Photos/unnamed-33.webp", alt: "Night training hex lights" },
+              { src: "/Photos/unnamed-37.webp", alt: "Dramatic grid LED wide" },
+              { src: "/Photos/unnamed-20.webp", alt: "Dumbbell rack" },
+            ].map((p, i) => (
+              <ScrollReveal key={p.src} delay={i * 60} className="relative">
+                <Link href="/gallery" className="card-img-zoom block relative h-full overflow-hidden rounded-none bg-ink-raised">
+                  <Image src={p.src} alt={p.alt} fill quality={75} sizes="50vw" className="object-cover" />
+                  <div className="absolute inset-0 bg-void/0 hover:bg-void/30 transition-all duration-500" />
+                </Link>
+              </ScrollReveal>
+            ))}
+          </div>
+
+          {/* Desktop: asymmetric grid */}
+          <div className="hidden md:grid grid-cols-12 grid-rows-2 gap-3 h-[520px]">
             {[
               { src: "/Photos/unnamed-25.webp", alt: "Main floor BOLDER neon", span: "col-span-5 row-span-2" },
               { src: "/Photos/unnamed-33.webp", alt: "Night training hex lights", span: "col-span-4 row-span-1" },
@@ -245,13 +262,13 @@ export default function HomePage() {
       </section>
 
       {/* ─── TESTIMONIALS ─── */}
-      <section className="py-28 lg:py-36 bg-void border-t border-white/[0.04]">
+      <section className="py-28 lg:py-36 bg-pearl border-t border-black/[0.06]">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <ScrollReveal className="mb-16 lg:mb-20">
             <div className="section-label">
               <span className="font-display text-[11px] font-semibold text-gold tracking-[0.4em] uppercase">Member Stories</span>
             </div>
-            <h2 className="font-display font-black uppercase leading-[0.88] text-[clamp(42px,6vw,80px)] text-cream">
+            <h2 className="font-display font-black uppercase leading-[0.88] text-[clamp(42px,6vw,80px)] text-graphite">
               Trusted By<br /><span className="text-gold-gradient">Athletes</span>
             </h2>
           </ScrollReveal>
@@ -259,9 +276,9 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {testimonials.map((t, i) => (
               <ScrollReveal key={t.name} delay={i * 100}>
-                <div className="card-premium rounded-none p-8 flex flex-col gap-6 h-full">
+                <div className="card-light rounded-none p-8 flex flex-col gap-6 h-full">
                   {/* Quote mark */}
-                  <svg className="w-8 h-8 text-gold/20" fill="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-8 h-8 text-gold/30" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
                   </svg>
                   {/* Stars */}
@@ -272,15 +289,15 @@ export default function HomePage() {
                       </svg>
                     ))}
                   </div>
-                  <p className="text-mist text-sm font-light leading-relaxed flex-1">&ldquo;{t.quote}&rdquo;</p>
+                  <p className="text-stone text-sm font-light leading-relaxed flex-1">&ldquo;{t.quote}&rdquo;</p>
                   {/* Author */}
-                  <div className="flex items-center gap-4 pt-5 border-t border-white/[0.06]">
-                    <div className="w-10 h-10 border border-gold/20 flex items-center justify-center text-gold font-display font-bold text-sm shrink-0">
+                  <div className="flex items-center gap-4 pt-5 border-t border-black/[0.07]">
+                    <div className="w-10 h-10 border border-gold/30 flex items-center justify-center text-gold font-display font-bold text-sm shrink-0">
                       {t.initials}
                     </div>
                     <div>
-                      <div className="text-cream font-semibold text-sm">{t.name}</div>
-                      <div className="text-ash text-xs font-light">{t.role}</div>
+                      <div className="text-graphite font-semibold text-sm">{t.name}</div>
+                      <div className="text-stone text-xs font-light">{t.role}</div>
                     </div>
                   </div>
                 </div>
