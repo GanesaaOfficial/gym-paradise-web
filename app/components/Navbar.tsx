@@ -6,120 +6,110 @@ import { usePathname } from "next/navigation";
 
 const navLinks = [
   { label: "Facilities", href: "/facilities" },
-  { label: "Pricing",    href: "/pricing" },
-  { label: "Gallery",    href: "/gallery" },
-  { label: "Contact",    href: "/contact" },
+  { label: "Pricing", href: "/pricing" },
+  { label: "Gallery", href: "/gallery" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
+  const isHome = pathname === "/";
 
   useEffect(() => {
-    const fn = () => setScrolled(window.scrollY > 50);
+    const fn = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", fn, { passive: true });
     return () => window.removeEventListener("scroll", fn);
   }, []);
 
-  useEffect(() => { setMobileOpen(false); }, [pathname]);
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileOpen]);
 
   const active = (href: string) => pathname === href;
+  const solid = scrolled || mobileOpen || !isHome;
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
-        scrolled || mobileOpen
-          ? "bg-void/92 backdrop-blur-2xl border-b border-white/[0.04]"
-          : "bg-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        solid
+          ? "bg-void/95 backdrop-blur-xl border-b border-gold/10 shadow-[0_4px_30px_rgba(0,0,0,0.5)]"
+          : "bg-gradient-to-b from-void/90 to-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="flex items-center justify-between h-[68px] lg:h-[76px]">
+      <div className="h-1 bg-gradient-to-r from-transparent via-gold/60 to-transparent" />
 
-          {/* Logo */}
-          <Link href="/" className="flex items-baseline gap-px group shrink-0">
-            <span className="font-display text-[22px] font-black uppercase tracking-[0.06em] text-cream group-hover:text-white transition-colors duration-300">
-              Gym Paradise
-            </span>
-            <span className="font-display text-[22px] font-black text-gold ml-1">3.0</span>
+      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+        <div className="flex items-center justify-between h-16 lg:h-[72px]">
+          <Link href="/" className="group flex items-center gap-3 shrink-0">
+            <div className="w-9 h-9 border border-gold/40 flex items-center justify-center bg-gold/10 group-hover:bg-gold/20 transition-colors">
+              <span className="font-display font-black text-gold text-sm">GP</span>
+            </div>
+            <div className="leading-none">
+              <span className="font-display text-lg lg:text-xl font-black uppercase tracking-wide text-cream block">
+                Gym Paradise
+              </span>
+              <span className="font-display text-[10px] font-bold tracking-[0.3em] uppercase text-gold">
+                Cheras Selatan 3.0
+              </span>
+            </div>
           </Link>
 
-          {/* Desktop nav */}
-          <div className="hidden md:flex items-center gap-9">
+          <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`relative font-display text-[12px] font-semibold tracking-[0.22em] uppercase transition-colors duration-200 group ${
-                  active(link.href)
-                    ? "text-gold"
-                    : "text-ash hover:text-cream"
+                className={`font-display text-[12px] font-bold tracking-[0.18em] uppercase transition-colors ${
+                  active(link.href) ? "text-gold" : "text-ash hover:text-cream"
                 }`}
               >
                 {link.label}
-                <span
-                  className={`absolute -bottom-1 left-0 h-px bg-gold transition-all duration-400 ${
-                    active(link.href) ? "w-full" : "w-0 group-hover:w-full"
-                  }`}
-                />
               </Link>
             ))}
           </div>
 
-          {/* Desktop CTA */}
-          <div className="hidden md:flex items-center gap-6">
-            <a
-              href="https://wa.me/601126898810"
-              target="_blank" rel="noopener noreferrer"
-              className="font-display text-[11px] font-semibold tracking-[0.2em] uppercase text-ash hover:text-gold transition-colors duration-200"
-            >
-              WhatsApp
-            </a>
-            <Link href="/pricing" className="btn-primary text-[12px] px-6 py-3">
-              Join Now
+          <div className="hidden md:flex items-center gap-4">
+            <Link href="/pricing" className="btn-primary text-[11px] px-5 py-2.5">
+              Train Now
             </Link>
           </div>
 
-          {/* Mobile toggle */}
           <button
-            className="md:hidden p-2 -mr-1 text-ash hover:text-cream transition-colors"
+            className="md:hidden p-2 text-cream"
             onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Toggle menu"
+            aria-label="Menu"
+            aria-expanded={mobileOpen}
           >
-            <div className="w-5 flex flex-col gap-[5px]">
-              <span className={`block h-px bg-current transition-all duration-300 origin-center ${mobileOpen ? "rotate-45 translate-y-[6px]" : ""}`} />
-              <span className={`block h-px bg-current transition-all duration-300 ${mobileOpen ? "opacity-0 scale-x-0" : ""}`} />
-              <span className={`block h-px bg-current transition-all duration-300 origin-center ${mobileOpen ? "-rotate-45 -translate-y-[6px]" : ""}`} />
+            <div className="w-6 flex flex-col gap-1.5">
+              <span className={`block h-0.5 bg-current transition-all ${mobileOpen ? "rotate-45 translate-y-2" : ""}`} />
+              <span className={`block h-0.5 bg-current transition-all ${mobileOpen ? "opacity-0" : ""}`} />
+              <span className={`block h-0.5 bg-current transition-all ${mobileOpen ? "-rotate-45 -translate-y-2" : ""}`} />
             </div>
           </button>
         </div>
 
-        {/* Mobile menu */}
-        <div
-          className={`md:hidden transition-all duration-500 overflow-hidden ${
-            mobileOpen ? "max-h-72 opacity-100 pb-5" : "max-h-0 opacity-0"
-          }`}
-        >
-          <div className="border-t border-white/[0.05] pt-5 flex flex-col gap-1">
+        <div className={`md:hidden overflow-hidden transition-all ${mobileOpen ? "max-h-96 pb-6" : "max-h-0"}`}>
+          <div className="border-t border-white/10 pt-4 space-y-1">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`font-display text-[13px] font-semibold tracking-[0.22em] uppercase px-3 py-3 transition-colors duration-200 ${
-                  active(link.href)
-                    ? "text-gold"
-                    : "text-ash hover:text-cream"
+                onClick={() => setMobileOpen(false)}
+                className={`block font-display text-sm font-bold tracking-widest uppercase py-3 px-2 ${
+                  active(link.href) ? "text-gold" : "text-ash"
                 }`}
               >
                 {link.label}
               </Link>
             ))}
-            <div className="pt-3 border-t border-white/[0.04] mt-2">
-              <Link href="/pricing" className="btn-primary w-full text-center py-3.5">
-                Join Now
-              </Link>
-            </div>
+            <Link href="/pricing" onClick={() => setMobileOpen(false)} className="btn-primary w-full justify-center mt-4">
+              Train Now
+            </Link>
           </div>
         </div>
       </div>

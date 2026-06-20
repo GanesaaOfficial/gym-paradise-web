@@ -3,6 +3,7 @@ import { Barlow_Condensed, DM_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import MobileStickyCta from "./components/MobileStickyCta";
 
 const barlow = Barlow_Condensed({
   variable: "--font-barlow",
@@ -29,9 +30,9 @@ export const metadata: Metadata = {
   keywords:
     "gym, fitness, Cheras Selatan, Balakong, Seri Kembangan, Selangor, HYROX, day pass, membership, personal training, powerlifting, bodybuilding, mega gym Malaysia, 38000 sq ft gym",
   openGraph: {
-    title: "Gym Paradise 3.0 — Malaysia's 1st World-Class Mega Gym",
+    title: "Gym Paradise 3.0 — Unlock Your Potential",
     description:
-      "38,000 sq ft · 200+ machines · HYROX Training Club · Grip Galaxy. Open 6AM–Midnight Mon–Sat in Balakong, Cheras Selatan.",
+      "Malaysia's 1st World-Class Mega Gym — 38,000 sq ft · 200+ machines · HYROX Training Club · Grip Galaxy. Open 6AM–Midnight Mon–Sat in Balakong, Cheras Selatan.",
     type: "website",
   },
 };
@@ -43,10 +44,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${barlow.variable} ${dmSans.variable}`}>
-      <body className="bg-void text-cream antialiased flex flex-col min-h-screen">
+      <body className="bg-void text-cream antialiased flex flex-col min-h-screen pb-16 md:pb-0">
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
+        <MobileStickyCta />
       </body>
     </html>
   );
