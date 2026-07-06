@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, CSSProperties } from "react";
+import { useLayoutEffect, useRef, useState, CSSProperties } from "react";
 
 type Direction = "up" | "left" | "right" | "scale";
 
@@ -30,7 +30,7 @@ export default function ScrollReveal({
   const [visible, setVisible] = useState(false);
   const { hidden, visible: vis } = directionMap[direction];
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const el = ref.current;
     if (!el) return;
 

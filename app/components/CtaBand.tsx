@@ -1,4 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
+import { IconArrowRight } from "./icons";
 
 interface Props {
   label?: string;
@@ -9,6 +11,7 @@ interface Props {
   secondaryHref?: string;
   secondaryLabel?: string;
   secondaryExternal?: boolean;
+  bgImage?: string;
 }
 
 export default function CtaBand({
@@ -20,38 +23,41 @@ export default function CtaBand({
   secondaryHref = "https://wa.me/601126898810",
   secondaryLabel = "WhatsApp Us",
   secondaryExternal = true,
+  bgImage = "/Photos/unnamed-34.webp",
 }: Props) {
   return (
-    <section className="relative py-20 lg:py-28 overflow-hidden bg-ink border-t border-white/[0.06]">
-      <div className="absolute inset-0 pattern-diagonal opacity-[0.04]" />
-      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold to-transparent opacity-40" />
-      <div className="absolute -right-20 top-1/2 -translate-y-1/2 font-display font-black text-[200px] leading-none text-white/[0.02] select-none pointer-events-none uppercase">
-        Train
+    <section className="relative py-24 lg:py-32 overflow-hidden border-t border-white/10">
+      <div className="absolute inset-0 z-0">
+        <Image
+          src={bgImage}
+          alt=""
+          fill
+          quality={80}
+          sizes="100vw"
+          className="object-cover"
+        />
       </div>
-
+      <div className="absolute inset-0 bg-void/90" />
+      <div className="absolute inset-0 bg-gradient-to-r from-void via-void/85 to-void/60" />
+      <div className="deco">
+        <div className="orb orb-gold orb-lg animate-float-slow" style={{ top: "-30%", right: "-6%" }} />
+        <div className="deco-diaglines w-[260px] h-[260px]" style={{ bottom: "-6%", left: "4%", opacity: 0.35 }} />
+      </div>
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-10">
         <div>
-          <div className="section-label">
-            <span className="font-display text-[11px] font-bold text-gold tracking-[0.35em] uppercase">
-              {label}
-            </span>
-          </div>
-          <h3 className="font-display font-black uppercase leading-[0.9] text-[clamp(32px,4.5vw,56px)] text-cream">
+          <p className="kicker mb-3">{label}</p>
+          <h3 className="type-display-lg text-cream">
             {title}
           </h3>
-          {subtitle && <p className="text-ash mt-3 text-base font-light max-w-lg">{subtitle}</p>}
+          {subtitle && <p className="text-body mt-3 max-w-lg text-mist">{subtitle}</p>}
         </div>
-        <div className="flex flex-col sm:flex-row gap-4 shrink-0 w-full sm:w-auto">
+        <div className="flex flex-col sm:flex-row gap-3 shrink-0 w-full sm:w-auto">
           <Link href={primaryHref} className="btn-primary justify-center">
             {primaryLabel}
+            <IconArrowRight className="w-4 h-4" />
           </Link>
           {secondaryExternal ? (
-            <a
-              href={secondaryHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-outline justify-center"
-            >
+            <a href={secondaryHref} target="_blank" rel="noopener noreferrer" className="btn-outline justify-center">
               {secondaryLabel}
             </a>
           ) : (

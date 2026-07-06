@@ -1,39 +1,41 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import PageHeader from "../components/PageHeader";
 import ScrollReveal from "../components/ScrollReveal";
-import SectionHeading from "../components/SectionHeading";
-import CtaBand from "../components/CtaBand";
+import { IconMapPin, IconClock, IconChat, IconArrowRight } from "../components/icons";
 
 export const metadata: Metadata = {
-  title: "Contact & Location",
-  description:
-    "Gym Paradise 3.0 — Lot 1897B, Jalan KPB 9, Balakong. Open Mon–Sat 6AM–Midnight. WhatsApp: +60 11-2689 8810.",
+  title: "Contact & Location | Gym Paradise",
+  description: "Gym Paradise 3.0 — Lot 1897B, Jalan KPB 9, Balakong. WhatsApp: +60 11-2689 8810.",
 };
 
 const info = [
   {
-    label: "Address",
+    Icon: IconMapPin,
+    label: "HQ Coordinates",
     primary: "Lot 1897B, Jalan KPB 9",
     secondary: "Kawasan Perindustrian Balakong, 43300 Seri Kembangan, Selangor",
+    action: {
+      label: "Navigate",
+      href: "https://maps.google.com/?q=Lot+1897B,+Jalan+KPB+9,+Kawasan+Perindustrian+Balakong,+43300+Seri+Kembangan,+Selangor",
+    },
   },
   {
+    Icon: IconClock,
     label: "Operating Hours",
-    primary: "Mon–Sat: 6:00 AM – 12:00 AM",
-    secondary: "Sun & Public Holidays: 9:00 AM – 12:00 AM",
+    primary: "6:00 AM – Midnight",
+    secondary: "Monday to Saturday. (Sundays & Public Holidays open at 9:00 AM)",
+    action: null,
   },
   {
-    label: "WhatsApp",
+    Icon: IconChat,
+    label: "Direct Line",
     primary: "+60 11-2689 8810",
-    secondary: "Memberships · PT · General enquiries",
+    secondary: "Memberships · Personal Training · General enquiries",
+    action: {
+      label: "Message on WhatsApp",
+      href: "https://wa.me/601126898810",
+    },
   },
-];
-
-const landmarks = [
-  "Kawasan Perindustrian Balakong",
-  "Accessible from Cheras & Balakong",
-  "Industrial Area Free Parking",
-  "Near Seri Kembangan",
 ];
 
 export default function ContactPage() {
@@ -44,112 +46,91 @@ export default function ContactPage() {
         highlight="The Gym"
         subtitle="Lot 1897B, Jalan KPB 9 — easy to reach, impossible to miss."
         bgImage="/Photos/unnamed-16.webp"
-        bgAlt="Gym Paradise building"
+        bgAlt="Gym Paradise building exterior"
         crumb="Contact"
       />
 
-      <section className="py-20 lg:py-28 bg-void">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
-            <div>
-              <ScrollReveal className="mb-10">
-                <SectionHeading label="Visit Us" title="We're Easy" highlight="To Find" />
-              </ScrollReveal>
-
-              <div className="space-y-4 mb-10">
-                {info.map((item, i) => (
-                  <ScrollReveal key={item.label} delay={i * 60}>
-                    <div className="training-card p-6 border-l-4 border-l-gold">
-                      <p className="font-display text-[10px] font-bold tracking-widest uppercase text-gold mb-2">{item.label}</p>
-                      <p className="text-cream font-semibold">{item.primary}</p>
-                      <p className="text-ash text-sm font-light mt-1">{item.secondary}</p>
-                    </div>
-                  </ScrollReveal>
-                ))}
-              </div>
-
-              <ScrollReveal delay={200}>
-                <div className="training-card p-6 mb-8">
-                  <p className="font-display text-[10px] font-bold tracking-widest uppercase text-gold mb-4">Nearby Landmarks</p>
-                  <ul className="grid sm:grid-cols-2 gap-3">
-                    {landmarks.map((lm) => (
-                      <li key={lm} className="flex items-center gap-2 text-sm text-mist">
-                        <span className="w-1.5 h-1.5 bg-gold" />
-                        {lm}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </ScrollReveal>
-
-              <ScrollReveal delay={250}>
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <a
-                    href="https://maps.google.com/?q=Lot+1897B,+Jalan+KPB+9,+Kawasan+Perindustrian+Balakong,+43300+Seri+Kembangan,+Selangor"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-primary flex-1 justify-center"
-                  >
-                    Open in Google Maps
-                  </a>
-                  <a href="https://wa.me/601126898810" target="_blank" rel="noopener noreferrer" className="btn-outline flex-1 justify-center">
-                    WhatsApp Us
-                  </a>
-                </div>
-              </ScrollReveal>
-            </div>
-
-            <div className="space-y-4">
-              <ScrollReveal direction="right">
-                <div className="relative h-64 lg:h-72 overflow-hidden training-card">
-                  <iframe
-                    title="Gym Paradise location map"
-                    src="https://maps.google.com/maps?q=Lot+1897B,+Jalan+KPB+9,+Kawasan+Perindustrian+Balakong,+43300+Seri+Kembangan,+Selangor&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                    className="absolute inset-0 w-full h-full border-0 grayscale contrast-125 opacity-90"
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                  />
-                </div>
-              </ScrollReveal>
-
-              <ScrollReveal direction="right" delay={100}>
-                <div className="relative h-56 lg:h-64 training-card overflow-hidden">
-                  <Image src="/Photos/unnamed-32.webp" alt="Gym Paradise building" fill quality={80} sizes="50vw" className="object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-void/80 to-transparent" />
-                  <span className="absolute bottom-4 left-4 font-display text-[10px] font-bold tracking-widest uppercase text-gold bg-void/70 px-3 py-1 border border-gold/30">
-                    Our Building
-                  </span>
-                </div>
-              </ScrollReveal>
-
-              <ScrollReveal direction="right" delay={150}>
-                <div className="training-card p-6">
-                  <p className="font-display text-[10px] font-bold tracking-widest uppercase text-gold mb-4">Hours Open Until Midnight</p>
-                  <div className="space-y-3">
-                    <div className="flex justify-between items-center border-b border-white/[0.06] pb-3">
-                      <span className="text-mist text-sm">Mon – Sat</span>
-                      <span className="font-display font-bold text-gold text-sm">6AM – 12AM</span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-mist text-sm">Sun & PH</span>
-                      <span className="font-display font-bold text-gold text-sm">9AM – 12AM</span>
-                    </div>
-                  </div>
-                </div>
+      <section className="relative bg-void overflow-hidden">
+        
+        {/* Brutalist Split-Screen Directory */}
+        <div className="flex flex-row w-full min-h-screen">
+          
+          {/* Left Column: Massive Anchor */}
+          <div className="w-[40%] relative border-r border-void/10">
+            <div className="sticky top-[70px] lg:top-0 bg-gold p-4 md:p-12 lg:p-24 flex flex-col justify-start h-[calc(100vh-70px)] lg:h-screen overflow-hidden">
+            {/* Dark abstract overlay to make it look gritty/technical */}
+            <div className="absolute inset-0 bg-void/10 mix-blend-overlay pointer-events-none" />
+            
+            <ScrollReveal direction="left">
+              <span className="text-void font-display font-black text-[9px] md:text-xs uppercase tracking-[0.2em] md:tracking-[0.4em] mb-4 block">
+                Directory
+              </span>
+              <h2 className="font-display font-black text-4xl md:text-[5rem] lg:text-[7rem] uppercase tracking-tighter leading-[0.85] text-void mix-blend-color-burn hyphens-auto break-words">
+                Locate
+              </h2>
+            </ScrollReveal>
+            
+            <div className="mt-8 lg:mt-16">
+              <ScrollReveal delay={100} direction="left">
+                <p className="text-void/80 font-display font-bold uppercase tracking-widest text-[9px] md:text-sm mb-2 md:mb-4">
+                  Signage Visible from Road
+                </p>
+                <div className="w-full h-px bg-void/20 mb-2 md:mb-4" />
+                <p className="text-void/80 font-display font-bold uppercase tracking-widest text-[9px] md:text-sm mb-2 md:mb-4">
+                  Free Outdoor Parking
+                </p>
+                <div className="w-full h-px bg-void/20 mb-2 md:mb-4" />
+                <p className="text-void/80 font-display font-bold uppercase tracking-widest text-[9px] md:text-sm mb-2 md:mb-4">
+                  Close to KPB Highway
+                </p>
               </ScrollReveal>
             </div>
           </div>
         </div>
-      </section>
 
-      <CtaBand
-        title="Ready To Join?"
-        subtitle="Walk in today with just a day pass — no membership required."
-        primaryLabel="View All Plans"
-        secondaryLabel="Explore Facilities"
-        secondaryHref="/facilities"
-        secondaryExternal={false}
-      />
+        {/* Right Column: Edge-to-Edge List & Map Card */}
+        <div className="w-[60%] flex flex-col">
+            {info.map((item, idx) => (
+              <ScrollReveal 
+                key={idx} 
+                delay={idx * 100} 
+                className="flex-1 border-b border-white/10 flex flex-col justify-center px-4 py-8 md:px-12 md:py-12 lg:px-24 lg:py-16 transition-colors duration-500 hover:bg-white/5 group"
+              >
+                <div className="flex items-center gap-3 lg:gap-6 mb-3 lg:mb-6">
+                  <div className="w-8 h-8 lg:w-12 lg:h-12 flex shrink-0 items-center justify-center border border-white/20 rounded-full group-hover:border-gold transition-colors">
+                    <item.Icon className="w-4 h-4 lg:w-5 lg:h-5 text-gold" />
+                  </div>
+                  <span className="font-display font-bold text-[10px] uppercase tracking-[0.3em] text-gold">
+                    {item.label}
+                  </span>
+                </div>
+                
+                <h3 className="font-display font-black text-2xl md:text-4xl lg:text-5xl text-cream uppercase tracking-tighter mb-4 leading-none">
+                  {item.primary}
+                </h3>
+                
+                <p className="text-mist text-sm md:text-lg mb-8 max-w-md">
+                  {item.secondary}
+                </p>
+                
+                {item.action && (
+                  <a 
+                    href={item.action.href} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-4 text-xs font-bold uppercase tracking-[0.2em] text-white group-hover:text-gold transition-colors w-fit"
+                  >
+                    {item.action.label}
+                    <IconArrowRight className="w-4 h-4" />
+                  </a>
+                )}
+              </ScrollReveal>
+            ))}
+
+          </div>
+        </div>
+
+      </section>
     </>
   );
 }

@@ -1,140 +1,124 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-
-const slides = [
-  {
-    src: "/Photos/unnamed-25.webp",
-    alt: "Main training floor with BOLDER neon sign",
-  },
-  {
-    src: "/Photos/unnamed-37.webp",
-    alt: "Dramatic wide shot of training floor with geometric LED grid",
-  },
-  {
-    src: "/Photos/unnamed-24.webp",
-    alt: "Free weight zone with UNSTOPPABLE neon sign",
-  },
-];
-
-const heroStats = [
-  { value: "38K", label: "Sq Ft" },
-  { value: "200+", label: "Machines" },
-  { value: "18", label: "Hours Daily" },
-  { value: "#1", label: "Mega Gym MY" },
-];
-
-const INTERVAL_MS = 6000;
+import { IconArrowRight, IconStar } from "./icons";
 
 export default function HeroSlideshow() {
-  const [active, setActive] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setActive((prev) => (prev + 1) % slides.length);
-    }, INTERVAL_MS);
-    return () => clearInterval(timer);
-  }, []);
-
   return (
-    <section className="relative min-h-[100svh] flex flex-col overflow-hidden">
-      <div className="absolute inset-0 bg-void" />
+    <section className="relative min-h-[100svh] bg-void overflow-hidden">
+      {/* Layered background decoration */}
+      <div className="deco">
+        <div className="absolute inset-0 hero-grid opacity-60" />
+        <div className="orb orb-gold orb-xl animate-float-slow" style={{ top: "-20%", left: "-15%" }} />
+        <div className="orb orb-ember orb-lg animate-float-slow-alt" style={{ bottom: "-25%", left: "20%" }} />
+        <div className="deco-word text-[26vw]" style={{ bottom: "-6%", left: "-3%" }}>PARADISE</div>
+      </div>
 
-      {slides.map((slide, i) => (
-        <div
-          key={slide.src}
-          className={`absolute inset-0 transition-opacity duration-[1400ms] ease-out ${
-            i === active ? "opacity-100" : "opacity-0"
-          }`}
-        >
-          <Image
-            src={slide.src}
-            alt={slide.alt}
-            fill
-            priority={i === 0}
-            quality={90}
-            sizes="100vw"
-            className="object-cover animate-ken-burns"
-          />
-        </div>
-      ))}
-
-      <div className="absolute inset-0 bg-gradient-to-r from-void via-void/85 to-void/30" />
-      <div className="absolute inset-0 bg-gradient-to-t from-void via-void/40 to-void/60" />
-      <div className="absolute inset-0 pattern-grid-athletic opacity-30" />
-
-      {/* Diagonal accent */}
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-gold/[0.06] to-transparent pointer-events-none" />
-
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 w-full flex flex-col flex-1 pt-24 md:pt-28 pb-32">
-        <div className="flex-1 flex flex-col justify-center max-w-3xl">
-          <div className="hero-line-1 inline-flex items-center gap-2 mb-6 w-fit bg-void/60 border border-gold/30 px-4 py-2">
-            <span className="w-2 h-2 bg-gold animate-pulse-gold" />
-            <span className="font-display text-[10px] font-bold text-gold tracking-[0.3em] uppercase">
-              Open 6AM – Midnight · Walk-Ins Welcome
-            </span>
+      <div className="relative z-10 min-h-[100svh] grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr]">
+        {/* Left: copy */}
+        <div className="relative flex flex-col justify-start lg:justify-center px-6 sm:px-10 lg:px-14 xl:px-20 pt-10 pb-16 lg:pt-32 lg:pb-32">
+          <div className="hero-line-1 flex items-center gap-3 mb-7 relative z-10">
+            <span className="h-px w-10 bg-gold" />
+            <span className="eyebrow">Malaysia&apos;s 1st World-Class Mega Gym</span>
           </div>
 
-          <p className="hero-line-1 font-display font-black italic uppercase text-gold text-[clamp(18px,3vw,28px)] tracking-[0.12em] mb-3">
-            Unlock Your Potential
-          </p>
-
-          <h1 className="hero-line-2 font-display font-black uppercase leading-[0.88] tracking-tight mb-4">
-            <span className="block text-[clamp(44px,9vw,108px)] text-cream">Train Like</span>
-            <span className="block text-[clamp(48px,10vw,120px)] text-gold-gradient italic">
-              An Athlete
-            </span>
+          <h1 className="hero-line-2 relative z-10 type-hero-display mb-7">
+            <span className="block text-cream">Unlock</span>
+            <span className="block text-gold-gradient">Your Potential</span>
           </h1>
 
-          <p className="hero-sub text-mist text-base lg:text-lg font-light leading-relaxed max-w-lg mb-3">
-            Malaysia&apos;s first world-class mega gym — 38,000 sq ft of premium iron,
-            HYROX Training Club, and Grip Galaxy in Cheras Selatan.
+          <p className="hero-sub text-body text-lg max-w-lg mb-9 relative z-10">
+            38,000 sq ft of premium equipment, HYROX Training Club and the famous Grip
+            Galaxy — in the heart of Cheras Selatan. Train your way, every single day.
           </p>
 
-          <p className="hero-sub font-display font-bold text-[11px] tracking-[0.25em] uppercase text-cream/50 mb-8">
-            Gym Paradise <span className="text-gold">3.0</span>
-          </p>
-
-          <div className="hero-cta flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+          <div className="hero-cta flex flex-col sm:flex-row gap-4 relative z-10">
             <Link href="/pricing" className="btn-primary">
               Start Training
+              <IconArrowRight className="w-4 h-4" />
             </Link>
-            <Link href="/facilities" className="btn-outline">
-              Explore Zones
-            </Link>
+            <a
+              href="https://wa.me/601126898810"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-outline"
+            >
+              Chat on WhatsApp
+            </a>
+          </div>
+
+          {/* Trust row */}
+          <div className="hero-dots flex items-center gap-4 mt-10 relative z-10">
+            <div className="flex gap-0.5 text-gold">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <IconStar key={i} className="w-4 h-4 fill-gold" />
+              ))}
+            </div>
+            <p className="text-body text-[15px] text-mist">
+              Loved by powerlifters, HYROX athletes &amp; walk-ins
+            </p>
+          </div>
+
+          {/* Mobile stats — borderless pills */}
+          <div className="flex flex-wrap gap-2 mt-12 lg:hidden relative z-10">
+            {[
+              { v: "38K", l: "Sq Ft" },
+              { v: "200+", l: "Machines" },
+              { v: "18h", l: "Open" },
+              { v: "HYROX", l: "Club" },
+            ].map((s) => (
+              <div key={s.l} className="discipline-pill flex-col !py-3 !px-4 !gap-1 !items-start">
+                <div className="font-display font-bold text-lg text-cream leading-none">{s.v}</div>
+                <div className="label-sm text-[9px] opacity-70">{s.l}</div>
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* Hero stats bar */}
-        <div className="hero-dots grid grid-cols-2 lg:grid-cols-4 gap-px bg-gold/20 border border-gold/20 mt-8">
-          {heroStats.map((s) => (
-            <div key={s.label} className="bg-void/90 backdrop-blur-sm px-5 py-4 lg:py-5 stat-block">
-              <div className="font-display font-black text-[clamp(28px,4vw,40px)] leading-none text-cream">
-                {s.value}
-              </div>
-              <div className="font-display text-[10px] font-bold tracking-[0.25em] uppercase text-gold mt-1">
-                {s.label}
-              </div>
-            </div>
-          ))}
+        {/* Right: premium workout photography */}
+        <div className="relative min-h-[58vh] lg:min-h-[100svh] order-first lg:order-last overflow-hidden">
+          <Image
+            src="/Photos/hero-workout.jpg"
+            alt="Athlete training with dumbbells at the gym — strength and dedication"
+            fill
+            priority
+            quality={92}
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            className="object-cover object-[center_15%] animate-ken-burns"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-void via-void/40 to-transparent lg:from-void lg:via-void/25" />
+          <div className="absolute inset-0 bg-gradient-to-t from-void via-transparent to-transparent lg:from-void/70 lg:via-transparent lg:to-void/20" />
+          {/* Diagonal accent seam on the image edge */}
+          <div className="hidden lg:block absolute inset-y-0 left-0 w-px bg-gradient-to-b from-transparent via-gold/40 to-transparent" />
         </div>
       </div>
 
-      {/* Slide nav */}
-      <div className="absolute bottom-28 lg:bottom-32 right-6 lg:right-12 z-20 flex gap-2">
-        {slides.map((_, i) => (
-          <button
-            key={i}
-            type="button"
-            aria-label={`Slide ${i + 1}`}
-            onClick={() => setActive(i)}
-            className={`h-1 transition-all duration-300 ${
-              i === active ? "w-8 bg-gold" : "w-4 bg-white/25 hover:bg-white/50"
-            }`}
-          />
-        ))}
+      {/* Scroll cue */}
+      <div className="hero-dots hidden lg:flex absolute bottom-28 left-1/2 -translate-x-1/2 z-20 flex-col items-center gap-2 pointer-events-none">
+        <span className="label-sm text-[10px] text-mist/70">Scroll</span>
+        <span className="relative block w-px h-10 bg-white/15 overflow-hidden">
+          <span className="absolute inset-x-0 top-0 h-1/2 bg-gold animate-[scrollCue_1.8s_ease-in-out_infinite]" />
+        </span>
+      </div>
+
+      {/* Bottom stats — desktop, borderless strip */}
+      <div className="hidden lg:block absolute bottom-0 left-0 right-0 z-20 bg-gradient-to-t from-void via-void/90 to-transparent backdrop-blur-md">
+        <div className="max-w-7xl mx-auto px-6 lg:px-14 py-8">
+          <div className="stat-strip">
+            {[
+              { v: "38,000", l: "Square Feet" },
+              { v: "200+", l: "Premium Machines" },
+              { v: "6AM–12AM", l: "Open Daily" },
+              { v: "Walk-In", l: "Always Welcome" },
+            ].map((s) => (
+              <div key={s.l}>
+                <div className="font-display font-bold text-2xl text-cream leading-none">{s.v}</div>
+                <div className="label-sm text-[11px] mt-2 opacity-80">{s.l}</div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

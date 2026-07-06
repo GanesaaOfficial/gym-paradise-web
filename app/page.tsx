@@ -1,26 +1,36 @@
 import Image from "next/image";
 import Link from "next/link";
-import HeroSlideshow from "./components/HeroSlideshow";
+import HeroImage from "./components/HeroImage";
 import AthleticMarquee from "./components/AthleticMarquee";
+import WhyGymParadise from "./components/WhyGymParadise";
+import OurPromise from "./components/OurPromise";
+import ParallaxFeatures from "./components/ParallaxFeatures";
 import ScrollReveal from "./components/ScrollReveal";
 import AnimatedCounter from "./components/AnimatedCounter";
 import SectionHeading from "./components/SectionHeading";
 import CtaBand from "./components/CtaBand";
+import {
+  IconMapPin,
+  IconClock,
+  IconArrowRight,
+  IconStar,
+} from "./components/icons";
 
 const disciplines = [
   "Powerlifting",
   "Bodybuilding",
   "HYROX",
+  "Weightlifting",
   "Functional",
-  "Cardio",
-  "Walk-In",
 ];
 
+
+
 const stats = [
-  { end: 38000, suffix: "", unit: "Sq Ft", desc: "Malaysia's largest training floor" },
-  { end: 200, suffix: "+", unit: "Machines", desc: "USA, UK & international equipment" },
+  { end: 38000, suffix: "", unit: "Sq Ft", desc: "Massive training space in Cheras Selatan" },
+  { end: 200, suffix: "+", unit: "Machines", desc: "Elite USA, UK & international equipment" },
   { end: 18, suffix: "", unit: "Hours", desc: "6AM–Midnight Mon–Sat" },
-  { end: 1, suffix: "st", unit: "Mega Gym", desc: "World-class · Opened Jan 2026" },
+  { end: 1, suffix: "st", unit: "Mega Gym", desc: "Malaysia's premier world-class mega gym" },
 ];
 
 const zones = [
@@ -30,7 +40,7 @@ const zones = [
     num: "01",
     tag: "Main Floor",
     title: "Epic Training Floor",
-    desc: "Warehouse-scale floor with geometric LED grids. Every session hits different.",
+    desc: "Warehouse-scale floor with geometric LED grids. Over 200+ elite machines ready for action.",
     href: "/facilities",
     span: "md:col-span-2 md:row-span-2",
     tall: true,
@@ -63,10 +73,30 @@ const zones = [
     num: "04",
     tag: "Free Weights",
     title: "Heavy Iron Zone",
-    desc: "Squat racks, platforms, full dumbbell range.",
+    desc: "Massive selection of squat racks, deadlift platforms, and premium dumbbells.",
     href: "/facilities",
-    span: "md:col-span-2",
+    span: "md:col-span-3",
     tall: false,
+  },
+];
+
+
+
+const steps = [
+  {
+    n: "1",
+    title: "Visit Cheras Selatan",
+    desc: "Drop by with a day pass or WhatsApp us to ask about memberships and personal training.",
+  },
+  {
+    n: "2",
+    title: "Choose Your Path",
+    desc: "Select a flexible membership or just pay per visit. No locked-in contracts, no pressure.",
+  },
+  {
+    n: "3",
+    title: "Start Training",
+    desc: "Get full access to every world-class zone and begin forging your legacy today.",
   },
 ];
 
@@ -97,112 +127,107 @@ const testimonials = [
 export default function HomePage() {
   return (
     <>
-      <HeroSlideshow />
+      <HeroImage />
       <AthleticMarquee />
-
-      {/* Disciplines */}
-      <section className="bg-ink border-b border-white/[0.06] py-10">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+      <ParallaxFeatures />
+      {/* Disciplines — massive interactive list */}
+      <section className="section-layer relative py-20 lg:py-32 bg-void overflow-hidden">
+        <div className="deco">
+          <div className="orb orb-gold-soft orb-md animate-float-slow" style={{ top: "10%", right: "-10%" }} />
+        </div>
+        <div className="layer-content">
           <ScrollReveal>
-            <p className="font-display text-[10px] font-bold tracking-[0.35em] uppercase text-gold mb-5 text-center">
-              Built For Every Athlete
-            </p>
-            <div className="flex flex-wrap justify-center gap-3">
+            <div className="max-w-7xl mx-auto px-6 lg:px-12">
+              <p className="glass px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest text-mist border border-white/10 backdrop-blur-md mb-12 inline-block">
+                Built For Every Athlete
+              </p>
+            </div>
+            <div className="w-full flex flex-col border-t border-white/10">
               {disciplines.map((d) => (
-                <span key={d} className="discipline-pill">
-                  <span className="w-1.5 h-1.5 bg-gold" />
-                  {d}
-                </span>
+                <div 
+                  key={d} 
+                  className="group relative border-b border-white/10 hover:border-gold/50 transition-colors duration-500 cursor-pointer overflow-hidden"
+                >
+                  {/* Hover background */}
+                  <div className="absolute inset-0 bg-gold/5 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]" />
+                  
+                  {/* Centered content constraint */}
+                  <div className="max-w-7xl mx-auto px-6 lg:px-12 py-8 lg:py-12 flex items-center justify-between">
+                    {/* Text */}
+                    <h3 className="relative z-10 font-display font-black text-5xl md:text-7xl lg:text-[7rem] text-transparent [-webkit-text-stroke:1.5px_rgba(255,255,255,0.2)] group-hover:[-webkit-text-stroke:transparent] group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-gold group-hover:to-gold/70 transition-all duration-500 uppercase tracking-tighter leading-none w-full text-left">
+                      {d}
+                    </h3>
+                  </div>
+                </div>
               ))}
             </div>
           </ScrollReveal>
         </div>
       </section>
 
-      {/* Stats */}
-      <section className="bg-void py-16 lg:py-20 pattern-diagonal">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-            {stats.map((s, i) => (
-              <ScrollReveal key={i} delay={i * 60}>
-                <div className="training-card p-6 lg:p-8 stat-block">
-                  <div className="font-display font-black text-[clamp(36px,4vw,52px)] leading-none text-cream">
+      <WhyGymParadise />
+
+      {/* Stats — typographic strip, no boxes */}
+      <section className="section-layer relative py-16 lg:py-24 mesh-bg overflow-hidden">
+        <div className="layer-content max-w-7xl mx-auto px-6 lg:px-12">
+          <ScrollReveal>
+            <div className="stat-strip">
+              {stats.map((s, i) => (
+                <div key={i} className={i > 0 ? "lg:pl-8" : ""}>
+                  <div className="stat-num">
                     <AnimatedCounter end={s.end} suffix={s.suffix} duration={2000} />
                   </div>
-                  <div className="font-display font-bold text-gold text-xs tracking-[0.2em] uppercase mt-2">
-                    {s.unit}
-                  </div>
-                  <p className="text-ash text-xs font-light mt-2">{s.desc}</p>
+                  <div className="stat-label">{s.unit}</div>
+                  <p className="text-body text-[14px] mt-2 text-mist hidden sm:block">{s.desc}</p>
                 </div>
-              </ScrollReveal>
-            ))}
-          </div>
+              ))}
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
-      {/* Promise band */}
-      <section className="relative py-24 lg:py-32 overflow-hidden">
-        <div className="absolute inset-0">
-          <Image src="/Photos/unnamed-27.webp" alt="Gym Paradise sign" fill quality={85} sizes="100vw" className="object-cover" />
-          <div className="absolute inset-0 bg-void/80" />
-        </div>
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-12 items-end">
-          <ScrollReveal direction="left">
-            <SectionHeading
-              label="Our Promise"
-              title="The First"
-              highlight="World-Class Mega Gym"
-              subtitle="Built for every athlete — from first session to elite competition prep. Premium equipment, neon-lit industrial atmosphere, and a community that pushes you to be stronger."
-            />
-          </ScrollReveal>
-          <ScrollReveal direction="right" delay={150} className="flex flex-col gap-4 lg:items-end">
-            <p className="font-display font-black italic uppercase text-[clamp(24px,3vw,36px)] text-gold leading-tight lg:text-right">
-              Stronger · Bolder · Unstoppable
-            </p>
-            <Link href="/facilities" className="btn-primary">
-              Tour The Gym
-            </Link>
-          </ScrollReveal>
-        </div>
-      </section>
+      <OurPromise />
 
       {/* Training zones bento */}
-      <section className="py-24 lg:py-32 bg-void">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+      <section className="section-layer relative py-24 lg:py-32 bg-void overflow-hidden">
+        <div className="deco">
+          <div className="deco-word text-[20vw]" style={{ top: "2%", left: "-3%" }}>ZONES</div>
+          <div className="orb orb-gold orb-lg animate-float-slow-alt" style={{ bottom: "-15%", right: "-10%" }} />
+          <div className="deco-diaglines w-[340px] h-[340px] animate-float-slow" style={{ top: "12%", right: "4%", opacity: 0.5 }} />
+        </div>
+        <div className="layer-content max-w-7xl mx-auto px-6 lg:px-12">
           <ScrollReveal className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-14">
             <SectionHeading
-              number="01"
               label="Training Zones"
               title="Where Champions"
               highlight="Are Made"
             />
             <Link href="/facilities" className="btn-ghost shrink-0">
-              All Facilities →
+              All Facilities
+              <IconArrowRight className="w-4 h-4" />
             </Link>
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-[220px] md:auto-rows-[200px]">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 lg:gap-4 auto-rows-[240px] md:auto-rows-[220px]">
             {zones.map((z, i) => (
               <ScrollReveal key={z.num} delay={i * 80} className={z.span}>
                 <Link
                   href={z.href}
-                  className={`training-card card-img-zoom block relative h-full min-h-[220px] group ${
+                  className={`bento-tile group block relative h-full min-h-[240px] ${
                     z.tall ? "md:min-h-full" : ""
                   }`}
                 >
-                  <Image src={z.img} alt={z.alt} fill quality={80} sizes="50vw" className="object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-void via-void/50 to-transparent" />
-                  <div className="absolute top-4 left-4 font-display text-[10px] font-bold tracking-widest uppercase text-gold bg-void/70 px-2 py-1 border border-gold/30">
-                    {z.tag}
-                  </div>
-                  <div className="absolute top-3 right-4 font-display font-black text-5xl text-white/10">
+                  <Image src={z.img} alt={z.alt} fill quality={80} sizes="50vw" className="object-cover transform-gpu will-change-transform group-hover:scale-105" style={{ transition: 'transform 2s cubic-bezier(0.22, 1, 0.36, 1)', WebkitBackfaceVisibility: 'hidden', backfaceVisibility: 'hidden', transform: 'translateZ(0)' }} />
+                  <div className="absolute inset-0 bg-gradient-to-t from-void via-void/40 to-transparent" />
+                  <span className="tag-blur absolute top-4 left-4">{z.tag}</span>
+                  <span className="absolute top-4 right-5 font-display font-extrabold text-[clamp(3rem,6vw,5rem)] leading-none text-white/[0.07]">
                     {z.num}
-                  </div>
-                  <div className="absolute bottom-0 left-0 right-0 p-5 lg:p-6">
-                    <h3 className="font-display font-black uppercase text-xl lg:text-2xl text-cream group-hover:text-gold transition-colors">
+                  </span>
+                  <div className="absolute bottom-0 left-0 right-0 p-6 lg:p-8">
+                    <h3 className="type-display-md text-cream group-hover:text-gold transition-colors duration-500">
                       {z.title}
                     </h3>
-                    <p className="text-mist text-sm font-light mt-1 max-w-sm">{z.desc}</p>
+                    <p className="text-body text-[15px] mt-2 max-w-sm text-mist opacity-90">{z.desc}</p>
                   </div>
                 </Link>
               </ScrollReveal>
@@ -211,58 +236,185 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Gallery preview */}
-      <section className="py-24 lg:py-32 bg-ink border-y border-white/[0.06]">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <ScrollReveal className="mb-12">
-            <SectionHeading label="Inside The Gym" title="See It To" highlight="Believe It" />
+      {/* Membership teaser */}
+      <section className="section-layer relative py-24 lg:py-36 mesh-bg overflow-hidden">
+        <div className="deco">
+          <div className="orb orb-gold orb-xl animate-float-slow" style={{ top: "-25%", left: "50%", transform: "translateX(-50%)" }} />
+        </div>
+        <div className="layer-content max-w-7xl mx-auto px-6 lg:px-12">
+          <ScrollReveal className="mb-14 max-w-2xl">
+            <SectionHeading
+              label="Simple, Honest Pricing"
+              title="Membership That"
+              highlight="Fits Your Life"
+              subtitle="No hidden fees. No lock-in contracts. Just flexible plans and famous walk-in access."
+            />
           </ScrollReveal>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 h-[320px] lg:h-[420px]">
-            {[
-              { src: "/Photos/unnamed-33.webp", alt: "Night training", span: "col-span-2 row-span-2" },
-              { src: "/Photos/unnamed-28.webp", alt: "Neon signs", span: "col-span-1" },
-              { src: "/Photos/unnamed-35.webp", alt: "Cardio", span: "col-span-1" },
-              { src: "/Photos/unnamed-26.webp", alt: "HYROX", span: "col-span-2" },
-            ].map((p, i) => (
-              <ScrollReveal key={p.src} delay={i * 50} className={p.span}>
-                <Link href="/gallery" className="card-img-zoom block relative h-full overflow-hidden">
-                  <Image src={p.src} alt={p.alt} fill quality={75} sizes="33vw" className="object-cover" />
-                  <div className="absolute inset-0 bg-void/0 hover:bg-gold/10 transition-colors" />
-                </Link>
-              </ScrollReveal>
-            ))}
-          </div>
-          <div className="mt-8 text-center">
-            <Link href="/gallery" className="btn-outline">View Full Gallery</Link>
+
+          <ScrollReveal delay={100} className="text-center mt-10">
+            <Link href="/pricing" className="btn-primary text-base lg:text-lg px-10 py-5 justify-center inline-flex mx-auto">
+              View Memberships & Passes
+              <IconArrowRight className="w-5 h-5 ml-2" />
+            </Link>
+          </ScrollReveal>
+        </div>
+      </section>
+
+
+      {/* Testimonials — editorial layout */}
+      <section className="section-layer relative py-24 lg:py-32 mesh-bg overflow-hidden">
+        <div className="layer-content max-w-7xl mx-auto px-6 lg:px-12">
+          <ScrollReveal className="mb-12 lg:mb-16">
+            <SectionHeading label="Member Stories" title="Trusted By" highlight="Real Athletes" />
+          </ScrollReveal>
+          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12">
+            <ScrollReveal className="lg:col-span-7">
+              <div className="quote-block">
+                <div className="flex gap-1 text-gold mb-6">
+                  {Array.from({ length: 5 }).map((_, s) => (
+                    <IconStar key={s} className="w-5 h-5 fill-gold" />
+                  ))}
+                </div>
+                <p className="type-lead text-cream leading-snug">&ldquo;{testimonials[0].quote}&rdquo;</p>
+                <div className="flex items-center gap-4 mt-8">
+                  <div className="w-12 h-12 rounded-full bg-gold/15 flex items-center justify-center font-display font-bold text-gold">
+                    {testimonials[0].initials}
+                  </div>
+                  <div>
+                    <p className="text-cream type-body-strong">{testimonials[0].name}</p>
+                    <p className="text-gold label-sm text-[11px]">{testimonials[0].role}</p>
+                  </div>
+                </div>
+              </div>
+            </ScrollReveal>
+            <div className="lg:col-span-5 flex flex-col gap-0">
+              {testimonials.slice(1).map((t, i) => (
+                <ScrollReveal key={t.name} delay={(i + 1) * 100}>
+                  <div className="quote-block">
+                    <p className="text-body text-mist">&ldquo;{t.quote}&rdquo;</p>
+                    <div className="flex items-center gap-3 mt-5">
+                      <div className="w-9 h-9 rounded-full bg-white/[0.06] flex items-center justify-center font-display text-sm font-bold text-gold">
+                        {t.initials}
+                      </div>
+                      <div>
+                        <p className="text-cream text-[15px] font-semibold">{t.name}</p>
+                        <p className="text-ash text-[12px]">{t.role}</p>
+                      </div>
+                    </div>
+                  </div>
+                </ScrollReveal>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="py-24 lg:py-32 bg-void">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <ScrollReveal className="mb-14">
-            <SectionHeading label="Member Stories" title="Trusted By" highlight="Real Athletes" align="center" />
+      {/* How to start — 3 steps */}
+      <section className="section-layer relative py-24 lg:py-32 bg-void overflow-hidden">
+        <div className="deco">
+          <div className="deco-word text-[20vw]" style={{ top: "6%", right: "-2%" }}>START</div>
+          <div className="orb orb-gold-soft orb-lg animate-float-slow" style={{ top: "20%", left: "-14%" }} />
+        </div>
+        <div className="layer-content max-w-7xl mx-auto px-6 lg:px-12">
+          <ScrollReveal className="mb-14 text-center">
+            <SectionHeading
+              label="Getting Started"
+              title="Your First Rep"
+              highlight="In 3 Simple Steps"
+              align="center"
+            />
           </ScrollReveal>
-          <div className="grid md:grid-cols-3 gap-5">
-            {testimonials.map((t, i) => (
-              <ScrollReveal key={t.name} delay={i * 100}>
-                <div className="training-card p-8 h-full flex flex-col">
-                  <div className="font-display font-black text-5xl text-gold/15 leading-none mb-4">&ldquo;</div>
-                  <p className="text-mist text-sm leading-relaxed flex-1">&ldquo;{t.quote}&rdquo;</p>
-                  <div className="flex items-center gap-4 mt-6 pt-6 border-t border-white/[0.06]">
-                    <div className="w-11 h-11 bg-gold/10 border border-gold/30 flex items-center justify-center font-display font-bold text-gold">
-                      {t.initials}
-                    </div>
-                    <div>
-                      <p className="text-cream font-semibold text-sm">{t.name}</p>
-                      <p className="text-gold text-xs font-display tracking-widest uppercase">{t.role}</p>
-                    </div>
-                  </div>
+          <div className="timeline">
+            {steps.map((step, i) => (
+              <ScrollReveal key={step.n} delay={i * 100}>
+                <div className="timeline-step group relative p-8 lg:p-10 rounded-2xl bg-white/[0.02] border border-white/5 overflow-hidden transition-all duration-500 hover:bg-white/[0.04] hover:border-gold/30 hover:shadow-[0_0_40px_rgba(201,168,76,0.1)] hover:-translate-y-2">
+                  {/* Subtle hover gradient background */}
+                  <div className="absolute -inset-px bg-gradient-to-br from-gold/0 via-gold/5 to-gold/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-sm pointer-events-none" />
+                  
+                  <div className="step-index">{step.n}</div>
+                  <h3 className="type-display-md text-cream mb-3 group-hover:text-gold transition-colors duration-500">{step.title}</h3>
+                  <p className="text-body text-mist">{step.desc}</p>
                 </div>
               </ScrollReveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Location & hours */}
+      <section className="section-layer relative py-24 lg:py-32 mesh-bg overflow-hidden">
+        <div className="layer-content max-w-7xl mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <ScrollReveal direction="left">
+            <div 
+              className="relative aspect-[3/4] group cursor-pointer"
+              style={{
+                WebkitMaskImage: 'radial-gradient(ellipse at center, black 40%, transparent 90%)',
+                maskImage: 'radial-gradient(ellipse at center, black 40%, transparent 90%)'
+              }}
+            >
+                <Image
+                  src="/Photos/unnamed-32.webp"
+                  alt="Gym Paradise building exterior"
+                  fill
+                  quality={100}
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover transform-gpu will-change-transform group-hover:scale-110"
+                  style={{ transition: 'transform 2s cubic-bezier(0.22, 1, 0.36, 1)', WebkitBackfaceVisibility: 'hidden', backfaceVisibility: 'hidden', transform: 'translateZ(0)' }}
+                />
+            </div>
+          </ScrollReveal>
+
+          <ScrollReveal direction="right" delay={100}>
+            <p className="label-sm mb-4">Visit Us</p>
+            <h2 className="type-display-lg text-cream mb-8">
+              Easy To Find,
+              <br />
+              <span className="text-gold-gradient">Impossible To Miss</span>
+            </h2>
+
+            <div className="mb-8">
+              <div className="info-row">
+                <IconMapPin className="w-5 h-5 text-gold shrink-0 mt-1" />
+                <div>
+                  <h3 className="type-body-strong text-cream mb-1">Location</h3>
+                  <p className="text-body text-[15px] text-mist">
+                    Lot 1897B, Jalan KPB 9, Kawasan Perindustrian Balakong, 43300 Seri Kembangan, Selangor
+                  </p>
+                </div>
+              </div>
+              <div className="info-row">
+                <IconClock className="w-5 h-5 text-gold shrink-0 mt-1" />
+                <div className="w-full">
+                  <h3 className="type-body-strong text-cream mb-3">Opening Hours</h3>
+                  <div className="space-y-2 max-w-sm">
+                    <div className="flex justify-between text-[15px]">
+                      <span className="text-mist">Mon – Sat</span>
+                      <span className="font-text font-semibold text-gold">6AM – 12AM</span>
+                    </div>
+                    <div className="flex justify-between text-[15px]">
+                      <span className="text-mist">Sun & Public Holidays</span>
+                      <span className="font-text font-semibold text-gold">9AM – 12AM</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Link href="/contact" className="btn-primary justify-center">
+                Get Directions
+                <IconArrowRight className="w-4 h-4" />
+              </Link>
+              <a
+                href="https://wa.me/601126898810"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-outline justify-center"
+              >
+                WhatsApp Us
+              </a>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 

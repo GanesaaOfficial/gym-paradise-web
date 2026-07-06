@@ -33,7 +33,7 @@ export default function AnimatedCounter({
           observer.unobserve(el);
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.1, rootMargin: "50px" }
     );
 
     observer.observe(el);

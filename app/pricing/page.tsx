@@ -1,200 +1,201 @@
 import type { Metadata } from "next";
 import PageHeader from "../components/PageHeader";
 import ScrollReveal from "../components/ScrollReveal";
-import SectionHeading from "../components/SectionHeading";
-import CtaBand from "../components/CtaBand";
+import { IconCheck, IconArrowRight, IconShield, IconHeart, IconDoor, IconStar, IconDumbbell } from "../components/icons";
 
 export const metadata: Metadata = {
-  title: "Pricing & Memberships",
-  description:
-    "Transparent pricing at Gym Paradise 3.0. Day pass RM25–35. Membership from RM178/month. No hidden fees. Walk-ins always welcome.",
+  title: "Pricing & Memberships | Gym Paradise",
+  description: "Transparent pricing at Gym Paradise. Walk-ins RM25–35. Memberships from RM120/month.",
 };
 
-const plans = [
-  {
-    name: "1 Month",
-    price: "RM178",
-    tagline: "Flexible monthly access.",
-    description: "Perfect for getting started with full gym access and no lock-in commitment.",
-    features: ["Access to gym equipment", "No contract", "Registration fee RM54", "Unlimited access in 1 month"],
-    badge: "Starter",
-    featured: false,
-  },
-  {
-    name: "3 Months",
-    price: "RM498",
-    tagline: "Great value for consistency.",
-    description: "Stay consistent with a longer-term package designed for steady progress.",
-    features: ["Access to gym equipment", "No contract", "Registration fee RM54", "Unlimited access in 3 months"],
-    badge: "Most Popular",
-    featured: true,
-  },
-  {
-    name: "6 Months",
-    price: "RM888",
-    tagline: "Half-year commitment, bigger savings.",
-    description: "Best for members committed to long-term training with stronger value per month.",
-    features: ["Access to gym equipment", "No contract", "Registration fee RM54", "Unlimited access in 6 months"],
-    badge: "Save More",
-    featured: false,
-  },
-  {
-    name: "1 Year",
-    price: "RM1588",
-    tagline: "Annual commitment, no registration fee.",
-    description: "Ideal for serious gym-goers who want long-term consistency and savings.",
-    features: ["Access to gym equipment", "No contract", "Waive registration fee", "Unlimited access in 1 year"],
-    badge: "Best Value",
-    featured: false,
-  },
-  {
-    name: "2 Years",
-    price: "RM2888",
-    tagline: "Maximum savings over time.",
-    description: "Strongest long-term package with waived registration fee and full access throughout.",
-    features: ["Access to gym equipment", "No contract", "Waive registration fee", "Unlimited access in 2 years"],
-    badge: "Max Savings",
-    featured: false,
-  },
-];
-
-const ptPackages = [
-  { name: "Starter Pack", sessions: "4 Sessions", desc: "Perfect introduction to personal training. Establish your baseline and build your custom programme." },
-  { name: "Momentum Pack", sessions: "8 Sessions", desc: "The sweet spot for measurable results. Refine technique, add progressive overload, track your progress." },
-  { name: "Elite Pack", sessions: "12 Sessions", desc: "Maximum transformation. Ideal for competition prep, weight loss milestones, or athletic performance goals." },
-];
-
-const faqs = [
-  { q: "Can I really just walk in without a membership?", a: "Absolutely. We're famous for our walk-in day pass policy. Just show up and train — no pre-booking needed." },
-  { q: "What's included with every membership?", a: "All memberships include full access to every zone: main floor, free weights, HYROX room, Grip Galaxy, cardio deck, locker room, and showers." },
-  { q: "Are there any joining fees or hidden charges?", a: "No. What you see is what you pay. No joining fees, no admin fees, no hidden charges." },
-  { q: "Can I upgrade or downgrade my membership?", a: "Yes. Contact us on WhatsApp to change your plan at any time. Upgrades take effect immediately." },
-  { q: "How do I book a personal trainer?", a: "Simply WhatsApp us to enquire about PT availability, trainer profiles, and current PT package rates." },
+const perks = [
+  { Icon: IconShield, title: "No Contracts", desc: "Cancel or change anytime — zero lock-in, zero stress." },
+  { Icon: IconHeart, title: "No Hidden Fees", desc: "The price you see is exactly what you pay. Always." },
+  { Icon: IconDoor, title: "Walk-Ins Welcome", desc: "Day pass access — no membership ever required." },
+  { Icon: IconStar, title: "Full Access", desc: "Every zone. All 200+ machines. Included in every plan." },
+  { Icon: IconDumbbell, title: "No Booking Needed", desc: "Show up when you want, train how you want." },
+  { Icon: IconCheck, title: "Fast Support", desc: "Questions? WhatsApp us — we reply in minutes." },
 ];
 
 export default function PricingPage() {
   return (
     <>
       <PageHeader
-        title="Train On"
-        highlight="Your Terms"
-        subtitle="No hidden fees. No contracts. Walk-ins welcome every day."
-        bgImage="/Photos/unnamed-37.webp"
-        bgAlt="Training floor"
+        title="Membership"
+        highlight="& Pricing"
+        subtitle="Zero hidden fees. Zero lock-in contracts. Just pure performance and transparency."
+        bgImage="/Photos/unnamed-17.webp"
+        bgAlt="Gym Paradise Facility"
         crumb="Pricing"
       />
 
-      <section className="py-20 lg:py-28 bg-void">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <ScrollReveal className="mb-12">
-            <SectionHeading label="Memberships" title="Choose Your" highlight="Plan" align="center" />
-          </ScrollReveal>
-
-          <ScrollReveal delay={40} className="mb-12">
-            <div className="training-card p-6 lg:p-8 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 border-l-4 border-l-gold">
-              <div>
-                <p className="font-display text-[10px] font-bold tracking-widest uppercase text-gold mb-2">Walk-In Day Pass</p>
-                <h3 className="font-display font-black uppercase text-2xl text-cream">No Membership Required</h3>
-                <p className="text-ash text-sm font-light mt-2">Famous walk-in policy — day pass RM25–35 per entry.</p>
-              </div>
-              <a href="https://wa.me/601126898810" target="_blank" rel="noopener noreferrer" className="btn-primary shrink-0">
-                Walk In Today
-              </a>
+      <section className="section-layer relative py-20 lg:py-32 bg-void overflow-hidden">
+        
+        <div className="layer-content max-w-7xl mx-auto px-6 lg:px-12">
+          <ScrollReveal>
+            <div className="flex items-center gap-4 mb-16 lg:mb-24">
+              <span className="text-gold font-display tracking-[0.4em] text-xs lg:text-sm uppercase font-black">
+                SYS.ACCESS_TIERS
+              </span>
+              <div className="h-px flex-1 bg-white/10" />
             </div>
           </ScrollReveal>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
-            {plans.map((plan, i) => (
-              <ScrollReveal key={plan.name} delay={i * 60}>
-                <div
-                  className={`training-card p-6 flex flex-col h-full relative ${
-                    plan.featured ? "ring-2 ring-gold lg:-mt-4 lg:mb-4" : ""
-                  }`}
-                >
-                  {plan.badge && (
-                    <span
-                      className={`absolute -top-3 left-4 font-display text-[9px] font-bold tracking-widest uppercase px-3 py-1 ${
-                        plan.featured ? "bg-gold text-void" : "bg-ink-high text-ash border border-white/10"
-                      }`}
-                    >
-                      {plan.badge}
-                    </span>
-                  )}
-                  <p className="font-display text-xs font-bold tracking-widest uppercase text-gold mt-2">{plan.name}</p>
-                  <p className="font-display font-black text-4xl text-cream mt-2">{plan.price}</p>
-                  <p className="text-ash/70 text-xs italic mt-1 mb-4">{plan.tagline}</p>
-                  <p className="text-ash text-sm font-light mb-4 flex-1">{plan.description}</p>
-                  <ul className="space-y-2 mb-6">
-                    {plan.features.map((f) => (
-                      <li key={f} className="flex items-start gap-2 text-xs text-mist">
-                        <span className="text-gold mt-0.5">✓</span>
-                        {f}
-                      </li>
-                    ))}
-                  </ul>
-                  <a
-                    href="https://wa.me/601126898810"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={plan.featured ? "btn-primary w-full justify-center" : "btn-outline w-full justify-center text-[11px] py-3"}
-                  >
-                    Join {plan.name}
-                  </a>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
+          {/* EDITORIAL BENTO GRID */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
+            
+            {/* WALK-IN TIER - COL SPAN 12 (Full Width Top) */}
+            <ScrollReveal className="lg:col-span-12 h-full">
+              <div className="group relative flex flex-col lg:flex-row items-center justify-between gap-12 p-10 lg:p-16 border border-white/10 bg-[#070707] hover:border-gold/40 transition-colors duration-500">
+                {/* HUD Elements */}
+                <div className="absolute top-0 left-0 w-8 h-8 border-t border-l border-white/20" />
+                <div className="absolute top-0 right-0 w-8 h-8 border-t border-r border-white/20" />
+                <div className="absolute bottom-0 left-0 w-8 h-8 border-b border-l border-white/20" />
+                <div className="absolute bottom-0 right-0 w-8 h-8 border-b border-r border-white/20" />
 
-          <p className="text-center text-ash/50 text-xs mt-10 max-w-2xl mx-auto">
-            * Registration fee RM54 applies to 1, 3, and 6-month plans. Waived on 1-year and 2-year plans.
-          </p>
-        </div>
-      </section>
-
-      <section className="py-20 lg:py-28 bg-ink border-y border-white/[0.06]">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <ScrollReveal className="mb-12">
-            <SectionHeading label="Personal Training" title="Train With" highlight="An Expert" />
-          </ScrollReveal>
-          <div className="grid md:grid-cols-3 gap-5">
-            {ptPackages.map((pkg, i) => (
-              <ScrollReveal key={pkg.name} delay={i * 80}>
-                <div className="training-card p-8 h-full flex flex-col">
-                  <span className="font-display text-[10px] font-bold tracking-widest uppercase text-gold">{pkg.sessions}</span>
-                  <h3 className="font-display font-black uppercase text-xl text-cream mt-2 mb-4">{pkg.name}</h3>
-                  <p className="text-ash text-sm font-light flex-1">{pkg.desc}</p>
-                  <a href="https://wa.me/601126898810" target="_blank" rel="noopener noreferrer" className="btn-ghost mt-6">
-                    Enquire →
-                  </a>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20 lg:py-28 bg-void">
-        <div className="max-w-3xl mx-auto px-6 lg:px-12">
-          <ScrollReveal className="mb-12">
-            <SectionHeading label="FAQ" title="Got" highlight="Questions?" align="center" />
-          </ScrollReveal>
-          <div className="space-y-3">
-            {faqs.map((faq, i) => (
-              <ScrollReveal key={faq.q} delay={i * 50}>
-                <div className="training-card p-6 border-l-4 border-l-gold/50">
-                  <h3 className="font-display font-bold uppercase text-sm text-cream mb-2 flex gap-3">
-                    <span className="text-gold/50">{String(i + 1).padStart(2, "0")}</span>
-                    {faq.q}
+                <div className="flex-1 w-full text-center lg:text-left">
+                  <span className="inline-block px-4 py-1 border border-gold text-gold text-[10px] font-bold uppercase tracking-[0.2em] mb-6">
+                    No Membership Required
+                  </span>
+                  <h3 className="font-display font-black text-5xl lg:text-7xl text-cream uppercase tracking-tighter mb-4 leading-none">
+                    Walk-In Pass
                   </h3>
-                  <p className="text-ash text-sm font-light pl-8">{faq.a}</p>
+                  <p className="text-mist text-lg lg:text-xl max-w-lg mx-auto lg:mx-0">
+                    Our famous pay-as-you-go policy. Show up, train, and leave. No strings attached.
+                  </p>
                 </div>
-              </ScrollReveal>
-            ))}
+
+                <div className="flex flex-col items-center lg:items-end w-full lg:w-auto shrink-0">
+                  <div className="flex items-baseline gap-2 mb-6">
+                    <span className="font-display font-black text-gold text-7xl lg:text-[8rem] leading-[0.8] tracking-tighter">RM25</span>
+                    <span className="text-mist font-display text-sm tracking-widest uppercase">to 35 / Day</span>
+                  </div>
+                  
+                  <a href="https://wa.me/601126898810" target="_blank" rel="noopener noreferrer" className="group/btn relative inline-flex items-center justify-center gap-3 bg-gold text-void font-display font-bold text-[13px] uppercase tracking-[0.1em] px-10 py-5 w-full lg:w-auto overflow-hidden">
+                    <span className="relative z-10">Walk In Today</span>
+                    <IconArrowRight className="relative z-10 w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
+                    <div className="absolute inset-0 bg-white/20 translate-y-[100%] group-hover/btn:translate-y-0 transition-transform duration-300 ease-out" />
+                  </a>
+                </div>
+              </div>
+            </ScrollReveal>
+
+            {/* 1 MONTH - COL SPAN 5 */}
+            <ScrollReveal delay={100} className="lg:col-span-5 h-full">
+              <div className="relative flex flex-col h-full p-10 lg:p-14 border border-white/10 bg-[#070707] hover:bg-[#0a0a0a] hover:border-white/30 transition-colors duration-500">
+                <span className="text-mist text-[10px] font-bold uppercase tracking-[0.2em] mb-2">Short Term</span>
+                <h3 className="font-display font-black text-4xl lg:text-5xl text-cream uppercase tracking-tighter mb-8 leading-none">
+                  1 Month
+                </h3>
+                
+                <div className="mb-12">
+                  <span className="font-display font-black text-cream text-6xl lg:text-7xl leading-none tracking-tighter block mb-2">RM178</span>
+                  <span className="text-gold font-display text-sm tracking-widest uppercase">Total Price</span>
+                </div>
+
+                <ul className="space-y-4 flex-1 mb-10">
+                  <li className="flex items-start gap-3 text-sm text-mist"><IconCheck className="w-4 h-4 mt-0.5 text-gold/50" /> Access all zones</li>
+                  <li className="flex items-start gap-3 text-sm text-mist"><IconCheck className="w-4 h-4 mt-0.5 text-gold/50" /> Cancel anytime</li>
+                  <li className="flex items-start gap-3 text-sm text-mist"><IconCheck className="w-4 h-4 mt-0.5 text-gold/50" /> RM54 Reg Fee Applies</li>
+                </ul>
+
+                <a href="https://wa.me/601126898810" target="_blank" rel="noopener noreferrer" className="text-cream text-xs uppercase font-bold tracking-[0.15em] border border-white/20 hover:border-gold hover:text-gold transition-colors py-4 px-6 text-center w-full">
+                  Select Plan
+                </a>
+              </div>
+            </ScrollReveal>
+
+            {/* 1 YEAR (FEATURED) - COL SPAN 7 */}
+            <ScrollReveal delay={200} className="lg:col-span-7 h-full">
+              <div className="relative flex flex-col h-full p-10 lg:p-14 border border-gold bg-[#0a0a0a] shadow-[0_0_50px_rgba(201,168,76,0.1)]">
+                {/* Featured Badge */}
+                <div className="absolute top-0 right-0 bg-gold text-void text-[10px] font-bold uppercase tracking-[0.2em] px-6 py-2">
+                  Best Value
+                </div>
+                
+                <span className="text-gold text-[10px] font-bold uppercase tracking-[0.2em] mb-2">Annual Savings</span>
+                <h3 className="font-display font-black text-4xl lg:text-6xl text-cream uppercase tracking-tighter mb-8 leading-none">
+                  1 Year
+                </h3>
+                
+                <div className="flex flex-col sm:flex-row items-baseline gap-6 mb-12">
+                  <div>
+                    <span className="font-display font-black text-gold text-6xl lg:text-[7rem] leading-[0.8] tracking-tighter block mb-2">RM132</span>
+                    <span className="text-mist font-display text-sm tracking-widest uppercase">Per Month (Avg)</span>
+                  </div>
+                  <div className="text-mist text-xs tracking-widest uppercase">/ RM1588 Total</div>
+                </div>
+
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 flex-1 mb-10">
+                  <li className="flex items-start gap-3 text-sm text-mist"><IconCheck className="w-4 h-4 mt-0.5 text-gold" /> Access all zones</li>
+                  <li className="flex items-start gap-3 text-sm text-mist"><IconCheck className="w-4 h-4 mt-0.5 text-gold" /> Cancel anytime</li>
+                  <li className="flex items-start gap-3 text-sm text-gold font-bold"><IconCheck className="w-4 h-4 mt-0.5 text-gold" /> Reg Fee WAIVED</li>
+                  <li className="flex items-start gap-3 text-sm text-mist"><IconCheck className="w-4 h-4 mt-0.5 text-gold" /> Freeze up to 2 months</li>
+                </ul>
+
+                <a href="https://wa.me/601126898810" target="_blank" rel="noopener noreferrer" className="bg-gold text-void text-xs uppercase font-bold tracking-[0.15em] hover:bg-white transition-colors py-4 px-6 text-center w-full sm:w-auto self-start">
+                  Commit & Save
+                </a>
+              </div>
+            </ScrollReveal>
+
+            {/* Other Plans Row */}
+            <ScrollReveal delay={300} className="lg:col-span-12">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                
+                <div className="p-8 border border-white/10 bg-[#070707] hover:border-white/30 transition-colors">
+                  <span className="text-mist text-[10px] font-bold uppercase tracking-[0.2em] mb-2 block">3 Months</span>
+                  <div className="font-display font-black text-4xl text-cream tracking-tighter mb-1">RM498</div>
+                  <div className="text-gold text-[10px] uppercase tracking-widest mb-6">RM166 / Month</div>
+                  <a href="https://wa.me/601126898810" target="_blank" className="text-mist text-[10px] uppercase font-bold tracking-[0.1em] hover:text-gold flex items-center gap-2">Select <IconArrowRight className="w-3 h-3" /></a>
+                </div>
+
+                <div className="p-8 border border-white/10 bg-[#070707] hover:border-white/30 transition-colors">
+                  <span className="text-mist text-[10px] font-bold uppercase tracking-[0.2em] mb-2 block">6 Months</span>
+                  <div className="font-display font-black text-4xl text-cream tracking-tighter mb-1">RM888</div>
+                  <div className="text-gold text-[10px] uppercase tracking-widest mb-6">RM148 / Month</div>
+                  <a href="https://wa.me/601126898810" target="_blank" className="text-mist text-[10px] uppercase font-bold tracking-[0.1em] hover:text-gold flex items-center gap-2">Select <IconArrowRight className="w-3 h-3" /></a>
+                </div>
+
+                <div className="p-8 border border-white/10 bg-[#070707] hover:border-white/30 transition-colors">
+                  <span className="text-gold text-[10px] font-bold uppercase tracking-[0.2em] mb-2 block">2 Years (Max Savings)</span>
+                  <div className="font-display font-black text-4xl text-cream tracking-tighter mb-1">RM2,888</div>
+                  <div className="text-gold text-[10px] uppercase tracking-widest mb-6">RM120 / Month (Reg Fee Waived)</div>
+                  <a href="https://wa.me/601126898810" target="_blank" className="text-mist text-[10px] uppercase font-bold tracking-[0.1em] hover:text-gold flex items-center gap-2">Select <IconArrowRight className="w-3 h-3" /></a>
+                </div>
+
+              </div>
+            </ScrollReveal>
+
+          </div>
+
+          <p className="text-center text-ash/40 text-[10px] uppercase tracking-widest mt-12 max-w-2xl mx-auto">
+            * Registration fee RM54 applies to 1, 3, and 6-month plans. Completely waived on 1-year and 2-year plans.
+          </p>
+
+          {/* Perks Grid - Edge to Edge */}
+          <div className="mt-32 pt-20 border-t border-white/10">
+            <ScrollReveal>
+               <h3 className="font-display font-black text-4xl text-cream uppercase tracking-tighter mb-12 text-center">
+                 The Gym Paradise Guarantee
+               </h3>
+            </ScrollReveal>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16">
+              {perks.map(({ Icon, title, desc }, i) => (
+                <ScrollReveal key={title} delay={i * 50}>
+                  <div className="flex flex-col gap-4">
+                    <Icon className="w-6 h-6 text-gold" />
+                    <div>
+                      <h4 className="font-display font-bold uppercase tracking-widest text-sm text-cream mb-2">{title}</h4>
+                      <p className="text-mist text-sm leading-relaxed">{desc}</p>
+                    </div>
+                  </div>
+                </ScrollReveal>
+              ))}
+            </div>
           </div>
         </div>
       </section>
-
-      <CtaBand title="Still Have Questions?" subtitle="WhatsApp us — we reply fast." primaryLabel="Chat on WhatsApp" />
     </>
   );
 }
