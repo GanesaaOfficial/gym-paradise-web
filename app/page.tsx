@@ -237,34 +237,44 @@ export default function HomePage() {
       </section>
 
       {/* Membership teaser */}
-      <section className="section-layer relative py-24 lg:py-36 mesh-bg overflow-hidden">
+
+
+      {/* How to start — 3 steps */}
+      <section className="section-layer relative py-24 lg:py-32 bg-void overflow-hidden">
         <div className="deco">
-          <div className="orb orb-gold orb-xl animate-float-slow" style={{ top: "-25%", left: "50%", transform: "translateX(-50%)" }} />
+          <div className="deco-word text-[20vw]" style={{ top: "6%", right: "-2%" }}>START</div>
+          <div className="orb orb-gold-soft orb-lg animate-float-slow" style={{ top: "20%", left: "-14%" }} />
         </div>
         <div className="layer-content max-w-7xl mx-auto px-6 lg:px-12">
-          <ScrollReveal className="mb-14 max-w-2xl">
+          <ScrollReveal className="mb-14 text-center">
             <SectionHeading
-              label="Simple, Honest Pricing"
-              title="Membership That"
-              highlight="Fits Your Life"
-              subtitle="No hidden fees. No lock-in contracts. Just flexible plans and famous walk-in access."
+              label="Getting Started"
+              title="Your First Rep"
+              highlight="In 3 Simple Steps"
+              align="center"
             />
           </ScrollReveal>
-
-          <ScrollReveal delay={100} className="text-center mt-10">
-            <Link href="/pricing" className="btn-primary text-base lg:text-lg px-10 py-5 justify-center inline-flex mx-auto">
-              View Memberships & Passes
-              <IconArrowRight className="w-5 h-5 ml-2" />
-            </Link>
-          </ScrollReveal>
+          <div className="timeline">
+            {steps.map((step, i) => (
+              <ScrollReveal key={step.n} delay={i * 100}>
+                <div className="timeline-step group relative p-8 lg:p-10 rounded-2xl bg-white/[0.02] border border-white/5 overflow-hidden transition-all duration-500 hover:bg-white/[0.04] hover:border-gold/30 hover:shadow-[0_0_40px_rgba(201,168,76,0.1)] hover:-translate-y-2">
+                  {/* Subtle hover gradient background */}
+                  <div className="absolute -inset-px bg-gradient-to-br from-gold/0 via-gold/5 to-gold/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-sm pointer-events-none" />
+                  
+                  <div className="step-index">{step.n}</div>
+                  <h3 className="type-display-md text-cream mb-3 group-hover:text-gold transition-colors duration-500">{step.title}</h3>
+                  <p className="text-body text-mist">{step.desc}</p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
         </div>
       </section>
 
-
       {/* Testimonials — editorial layout */}
-      <section className="section-layer relative py-24 lg:py-32 mesh-bg overflow-hidden">
+      <section className="section-layer relative py-24 lg:py-32 mesh-bg overflow-hidden border-t border-white/5">
         <div className="layer-content max-w-7xl mx-auto px-6 lg:px-12">
-          <ScrollReveal className="mb-12 lg:mb-16">
+          <ScrollReveal className="mb-12 lg:mb-16 text-center lg:text-left">
             <SectionHeading label="Member Stories" title="Trusted By" highlight="Real Athletes" />
           </ScrollReveal>
           <div className="grid lg:grid-cols-12 gap-8 lg:gap-12">
@@ -305,38 +315,6 @@ export default function HomePage() {
                 </ScrollReveal>
               ))}
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* How to start — 3 steps */}
-      <section className="section-layer relative py-24 lg:py-32 bg-void overflow-hidden">
-        <div className="deco">
-          <div className="deco-word text-[20vw]" style={{ top: "6%", right: "-2%" }}>START</div>
-          <div className="orb orb-gold-soft orb-lg animate-float-slow" style={{ top: "20%", left: "-14%" }} />
-        </div>
-        <div className="layer-content max-w-7xl mx-auto px-6 lg:px-12">
-          <ScrollReveal className="mb-14 text-center">
-            <SectionHeading
-              label="Getting Started"
-              title="Your First Rep"
-              highlight="In 3 Simple Steps"
-              align="center"
-            />
-          </ScrollReveal>
-          <div className="timeline">
-            {steps.map((step, i) => (
-              <ScrollReveal key={step.n} delay={i * 100}>
-                <div className="timeline-step group relative p-8 lg:p-10 rounded-2xl bg-white/[0.02] border border-white/5 overflow-hidden transition-all duration-500 hover:bg-white/[0.04] hover:border-gold/30 hover:shadow-[0_0_40px_rgba(201,168,76,0.1)] hover:-translate-y-2">
-                  {/* Subtle hover gradient background */}
-                  <div className="absolute -inset-px bg-gradient-to-br from-gold/0 via-gold/5 to-gold/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-sm pointer-events-none" />
-                  
-                  <div className="step-index">{step.n}</div>
-                  <h3 className="type-display-md text-cream mb-3 group-hover:text-gold transition-colors duration-500">{step.title}</h3>
-                  <p className="text-body text-mist">{step.desc}</p>
-                </div>
-              </ScrollReveal>
-            ))}
           </div>
         </div>
       </section>

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 const info = [
   {
     Icon: IconMapPin,
-    label: "HQ Coordinates",
+    label: "Coordinates",
     primary: "Lot 1897B, Jalan KPB 9",
     secondary: "Kawasan Perindustrian Balakong, 43300 Seri Kembangan, Selangor",
     action: {
@@ -56,16 +56,17 @@ export default function ContactPage() {
         <div className="flex flex-row w-full min-h-screen">
           
           {/* Left Column: Massive Anchor */}
-          <div className="w-[40%] relative border-r border-void/10">
-            <div className="sticky top-[70px] lg:top-0 bg-gold p-4 md:p-12 lg:p-24 flex flex-col justify-start h-[calc(100vh-70px)] lg:h-screen overflow-hidden">
+          <div className="w-[40%] relative bg-gold border-r border-void/10">
             {/* Dark abstract overlay to make it look gritty/technical */}
             <div className="absolute inset-0 bg-void/10 mix-blend-overlay pointer-events-none" />
             
+            <div className="sticky top-[70px] lg:top-0 p-4 md:p-12 lg:p-24 flex flex-col justify-start h-[calc(100vh-70px)] lg:h-screen overflow-hidden">
+            
             <ScrollReveal direction="left">
-              <span className="text-void font-display font-black text-[9px] md:text-xs uppercase tracking-[0.2em] md:tracking-[0.4em] mb-4 block">
+              <span className="text-void font-display font-black text-[9px] md:text-xs uppercase tracking-[0.2em] md:tracking-[0.4em] mb-6 md:mb-8 block">
                 Directory
               </span>
-              <h2 className="font-display font-black text-4xl md:text-[5rem] lg:text-[7rem] uppercase tracking-tighter leading-[0.85] text-void mix-blend-color-burn hyphens-auto break-words">
+              <h2 className="font-display font-black text-2xl sm:text-3xl md:text-[5rem] lg:text-[7rem] uppercase tracking-tighter leading-[0.85] text-void mix-blend-color-burn break-keep mt-2 md:mt-4">
                 Locate
               </h2>
             </ScrollReveal>
