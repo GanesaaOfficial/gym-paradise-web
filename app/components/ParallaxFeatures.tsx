@@ -51,27 +51,35 @@ export default function ParallaxFeatures() {
         const panels = gsap.utils.toArray(".hz-panel");
         if (panels.length === 0) return;
 
-        gsap.to(sliderRef.current, {
-          xPercent: -100 * ((panels.length - 1) / panels.length),
-          ease: "none",
+        const tl = gsap.timeline({
           scrollTrigger: {
             trigger: containerRef.current,
             start: "top top",
             end: "bottom bottom",
-            scrub: 1.2,
+            scrub: true,
             invalidateOnRefresh: true,
           }
         });
 
-        gsap.to(".progress-fill", {
-          scaleX: 1,
+        tl.to(sliderRef.current, {
+          xPercent: -100 * ((panels.length - 1) / panels.length),
           ease: "none",
+          duration: 1
+        });
+
+        const tlProgress = gsap.timeline({
           scrollTrigger: {
             trigger: containerRef.current,
             start: "top top",
             end: "bottom bottom",
-            scrub: 1.2,
+            scrub: true,
           }
+        });
+
+        tlProgress.to(".progress-fill", {
+          scaleX: 1,
+          ease: "none",
+          duration: 1
         });
       }, containerRef);
       return () => ctx.revert();
@@ -99,18 +107,6 @@ export default function ParallaxFeatures() {
           <div className="absolute -top-2 left-1/2 w-px h-4 bg-white/40" />
           <div className="absolute -bottom-2 left-1/2 w-px h-4 bg-white/40" />
 
-          {/* Top HUD Text */}
-          <div className="flex justify-between items-center text-[8px] lg:text-[10px] tracking-[0.3em] text-white/50 uppercase font-mono font-bold">
-            <span className="hidden md:block">SYS.BLUEPRINT_V1.0</span>
-            <span>GYM PARADISE // KUALA LUMPUR</span>
-            <span className="hidden md:block">COORD: 3.1420° N // 101.6932° E</span>
-          </div>
-
-          {/* Bottom HUD Space */}
-          <div className="flex justify-between items-end text-[10px] tracking-[0.2em] text-white/30 font-mono">
-            <span>REC</span>
-            <span>120 FPS</span>
-          </div>
         </div>
 
         <div 

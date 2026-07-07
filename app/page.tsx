@@ -9,6 +9,7 @@ import ScrollReveal from "./components/ScrollReveal";
 import AnimatedCounter from "./components/AnimatedCounter";
 import SectionHeading from "./components/SectionHeading";
 import CtaBand from "./components/CtaBand";
+import InteractiveDisciplines from "./components/InteractiveDisciplines";
 import {
   IconMapPin,
   IconClock,
@@ -142,25 +143,7 @@ export default function HomePage() {
                 Built For Every Athlete
               </p>
             </div>
-            <div className="w-full flex flex-col border-t border-white/10">
-              {disciplines.map((d) => (
-                <div 
-                  key={d} 
-                  className="group relative border-b border-white/10 hover:border-gold/50 transition-colors duration-500 cursor-pointer overflow-hidden"
-                >
-                  {/* Hover background */}
-                  <div className="absolute inset-0 bg-gold/5 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]" />
-                  
-                  {/* Centered content constraint */}
-                  <div className="max-w-7xl mx-auto px-6 lg:px-12 py-8 lg:py-12 flex items-center justify-between">
-                    {/* Text */}
-                    <h3 className="relative z-10 font-display font-black text-5xl md:text-7xl lg:text-[7rem] text-transparent [-webkit-text-stroke:1.5px_rgba(255,255,255,0.2)] group-hover:[-webkit-text-stroke:transparent] group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-gold group-hover:to-gold/70 transition-all duration-500 uppercase tracking-tighter leading-none w-full text-left">
-                      {d}
-                    </h3>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <InteractiveDisciplines disciplines={disciplines} />
           </ScrollReveal>
         </div>
       </section>

@@ -52,45 +52,33 @@ export default function ContactPage() {
 
       <section className="relative bg-void overflow-hidden">
         
-        {/* Brutalist Split-Screen Directory */}
-        <div className="flex flex-row w-full min-h-screen">
+        {/* Modern Split-Screen Directory */}
+        <div className="flex flex-col lg:flex-row w-full min-h-screen">
           
-          {/* Left Column: Massive Anchor */}
-          <div className="w-[40%] relative bg-gold border-r border-void/10">
-            {/* Dark abstract overlay to make it look gritty/technical */}
-            <div className="absolute inset-0 bg-void/10 mix-blend-overlay pointer-events-none" />
+          {/* Left Column: Clean, Professional Yellow Anchor */}
+          <div className="w-full lg:w-[40%] relative lg:sticky lg:top-0 bg-gold flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-void/10 p-8 md:p-12 lg:p-24 overflow-hidden h-[50vh] lg:h-screen">
             
-            <div className="sticky top-[70px] lg:top-0 p-4 md:p-12 lg:p-24 flex flex-col justify-start h-[calc(100vh-70px)] lg:h-screen overflow-hidden">
-            
-            <ScrollReveal direction="left">
-              <span className="text-void font-display font-black text-[9px] md:text-xs uppercase tracking-[0.2em] md:tracking-[0.4em] mb-6 md:mb-8 block">
+            {/* Clean, massive typography */}
+            <ScrollReveal direction="up" className="w-full flex flex-col items-start mt-8 lg:mt-0">
+              <p className="text-void/60 font-mono font-bold text-[10px] md:text-xs uppercase tracking-[0.4em] mb-4">
                 Directory
-              </span>
-              <h2 className="font-display font-black text-2xl sm:text-3xl md:text-[5rem] lg:text-[7rem] uppercase tracking-tighter leading-[0.85] text-void mix-blend-color-burn break-keep mt-2 md:mt-4">
-                Locate
+              </p>
+              
+              <h2 className="font-display font-black text-6xl md:text-7xl lg:text-[7.5rem] uppercase tracking-tighter leading-[0.85] text-void mb-8">
+                Locate<br />Us
               </h2>
+              
+              <div className="w-16 h-1.5 bg-void rounded-full mb-8" />
+              
+              <p className="text-void/80 text-sm md:text-base max-w-xs leading-relaxed font-medium">
+                Our flagship facility located in the heart of Cheras Selatan. Built for serious athletes.
+              </p>
             </ScrollReveal>
             
-            <div className="mt-8 lg:mt-16">
-              <ScrollReveal delay={100} direction="left">
-                <p className="text-void/80 font-display font-bold uppercase tracking-widest text-[9px] md:text-sm mb-2 md:mb-4">
-                  Signage Visible from Road
-                </p>
-                <div className="w-full h-px bg-void/20 mb-2 md:mb-4" />
-                <p className="text-void/80 font-display font-bold uppercase tracking-widest text-[9px] md:text-sm mb-2 md:mb-4">
-                  Free Outdoor Parking
-                </p>
-                <div className="w-full h-px bg-void/20 mb-2 md:mb-4" />
-                <p className="text-void/80 font-display font-bold uppercase tracking-widest text-[9px] md:text-sm mb-2 md:mb-4">
-                  Close to KPB Highway
-                </p>
-              </ScrollReveal>
-            </div>
           </div>
-        </div>
 
         {/* Right Column: Edge-to-Edge List & Map Card */}
-        <div className="w-[60%] flex flex-col">
+        <div className="w-full lg:w-[60%] flex flex-col">
             {info.map((item, idx) => (
               <ScrollReveal 
                 key={idx} 
